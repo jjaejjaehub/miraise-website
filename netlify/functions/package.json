@@ -1,0 +1,9 @@
+{
+  "name": "miraise-functions",
+  "version": "1.0.0",
+  "description": "Netlify functions for miraise-website",
+  "type": "commonjs",
+  "dependencies": {
+    "resend": "^6.10.0"
+  }
+}

@@ -1,0 +1,15 @@
+# 로컬 개발 서버 (배포 불필요)
+server/
+
+# Claude 컨텍스트 파일
+CLAUDE.md
+
+# 환경 변수
+.env
+
+# 의존성
+node_modules/
+netlify/functions/node_modules/
+
+# 시스템
+.DS_Store

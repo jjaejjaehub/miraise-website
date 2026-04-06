@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html class="dark" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>miraise | 커머스 운영의 새로운 기준, OMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#3182F6",
+          "primary-container": "#478fff",
+          "primary-fixed-dim": "#acc7ff",
+          "on-primary": "#002f67",
+          "on-primary-container": "#00285b",
+          "secondary": "#afc7fa",
+          "secondary-container": "#2e4672",
+          "on-secondary": "#15305a",
+          "on-secondary-container": "#9eb5e7",
+          "surface-container-lowest": "#080808",
+          "surface-container-low": "#1c1b1b",
+          "surface-container": "#201f1f",
+          "surface-container-high": "#2a2a2a",
+          "surface-container-highest": "#353534",
+          "surface": "#131313",
+          "surface-dim": "#131313",
+          "surface-variant": "#353534",
+          "surface-bright": "#3a3939",
+          "background": "#080808",
+          "on-surface": "#e5e2e1",
+          "on-surface-variant": "#c1c6d6",
+          "on-background": "#e5e2e1",
+          "outline": "#8b909f",
+          "outline-variant": "#414754",
+          "error": "#ffb4ab",
+          "error-container": "#93000a",
+          "tertiary": "#ffb689",
+          "tertiary-container": "#e27113",
+          "inverse-surface": "#e5e2e1",
+          "inverse-primary": "#005bbe",
+          "surface-tint": "#acc7ff",
+        },
+        fontFamily: {
+          "headline": ["Plus Jakarta Sans", "Inter"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        },
+        borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px" },
+        keyframes: {
+          fadeUp: { "0%": { opacity: "0", transform: "translateY(32px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+          fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+          glowPulse: { "0%": { opacity: "0.35", transform: "scale(0.93)" }, "100%": { opacity: "0.75", transform: "scale(1.07)" } },
+          barRise: { "from": { height: "8%", opacity: "0.4", transform: "translateY(8px)" }, "to": { height: "var(--bar-target)", opacity: "1", transform: "translateY(0)" } },
+          statusPulse: { "0%,100%": { transform: "scale(1)", opacity: "1" }, "50%": { transform: "scale(1.45)", opacity: "0.6" } },
+          slideRight: { "0%": { width: "0%" }, "100%": { width: "var(--line-w, 100%)" } },
+          float: { "0%,100%": { transform: "translateY(0px)" }, "50%": { transform: "translateY(-6px)" } },
+          ticker: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
+          modalIn: { "0%": { opacity: "0", transform: "scale(0.94) translateY(16px)" }, "100%": { opacity: "1", transform: "scale(1) translateY(0)" } },
+          spin: { "from": { transform: "rotate(0deg)" }, "to": { transform: "rotate(360deg)" } },
+        },
+        animation: {
+          "fade-up": "fadeUp 0.7s cubic-bezier(0.05,0.7,0.1,1) forwards",
+          "fade-in": "fadeIn 0.6s ease forwards",
+          "glow-pulse": "glowPulse 6s ease-in-out infinite alternate",
+          "bar-rise": "barRise 900ms cubic-bezier(0.05,0.7,0.1,1) forwards",
+          "status-pulse": "statusPulse 1.8s ease-in-out infinite",
+          "float": "float 4s ease-in-out infinite",
+          "ticker": "ticker 28s linear infinite",
+          "modal-in": "modalIn 0.35s cubic-bezier(0.05,0.7,0.1,1) forwards",
+          "spin": "spin 0.7s linear",
+        }
+      }
+    }
+  }
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background-color: #080808; color: #e5e2e1; overflow-x: hidden; }
+  .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .keep-all { word-break: keep-all; }
+
+  /* Scroll progress */
+  #scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
+    background: linear-gradient(90deg, #3182F6, #acc7ff);
+    width: 0%; transition: width 0.1s linear;
+  }
+
+  /* Glass */
+  .glass { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.05,0.7,0.1,1), transform 0.75s cubic-bezier(0.05,0.7,0.1,1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Material icons */
+  .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+
+  /* Nav underline animation */
+  .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; height:2px; width:0; background:#3182F6; transition: width 0.3s ease; border-radius:2px; }
+  .nav-link:hover::after, .nav-link.active::after { width:100%; }
+  .nav-link { position:relative; }
+
+  /* Data bars */
+  .data-bar { --bar-target: 60%; height: 8%; }
+  .data-bar.animated { animation: barRise 900ms cubic-bezier(0.05,0.7,0.1,1) forwards; }
+  .bar-1 { --bar-target: 50%; animation-delay: 60ms; }
+  .bar-2 { --bar-target: 66%; animation-delay: 120ms; }
+  .bar-3 { --bar-target: 74%; animation-delay: 180ms; }
+  .bar-4 { --bar-target: 100%; animation-delay: 240ms; }
+  .bar-5 { --bar-target: 82%; animation-delay: 300ms; }
+  .bar-6 { --bar-target: 54%; animation-delay: 360ms; }
+  .bar-7 { --bar-target: 68%; animation-delay: 420ms; }
+  @keyframes barRise {
+    from { height: 8%; opacity: 0.4; transform: translateY(8px); }
+    to { height: var(--bar-target); opacity: 1; transform: translateY(0); }
+  }
+  @keyframes statusPulse {
+    0%,100% { transform:scale(1); opacity:1; }
+    50% { transform:scale(1.45); opacity:0.6; }
+  }
+  .status-pulse { animation: statusPulse 1.8s ease-in-out infinite; }
+  .chart-grid {
+    background-image: linear-gradient(to top, rgba(65,71,84,0.2) 1px, transparent 1px);
+    background-size: 100% 25%;
+  }
+
+  /* Glow */
+  .hero-glow { animation: glowPulse 6s ease-in-out infinite alternate; }
+  @keyframes glowPulse {
+    0% { opacity:0.35; transform:scale(0.93); }
+    100% { opacity:0.75; transform:scale(1.07); }
+  }
+
+  /* Gradient button */
+  .btn-primary {
+    background: linear-gradient(135deg, #3182F6 0%, #478fff 100%);
+    box-shadow: 0 8px 24px rgba(49,130,246,0.35);
+    transition: all 0.25s ease;
+  }
+  .btn-primary:hover { filter: brightness(1.12); box-shadow: 0 12px 36px rgba(49,130,246,0.5); transform: translateY(-1px); }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    transition: all 0.25s ease;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(49,130,246,0.5); color: #acc7ff; }
+  .btn-ghost:active { transform: scale(0.97); }
+
+  /* Ticker */
+  .ticker-wrap { overflow: hidden; }
+  .ticker-track { display: flex; width: max-content; animation: ticker 28s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* Process line */
+  .process-line { height: 2px; background: linear-gradient(90deg, #3182F6, transparent); width: 0; transition: width 1s ease; }
+  .process-line.visible { width: 100%; }
+
+  /* FAQ accordion */
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.05,0.7,0.1,1), opacity 0.3s ease; opacity: 0; }
+  .faq-item.open .faq-answer { max-height: 300px; opacity: 1; }
+  .faq-icon { transition: transform 0.35s ease; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* Modal */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:1000; display:none; align-items:center; justify-content:center; padding:1rem; }
+  .modal-overlay.open { display:flex; }
+  .modal-box { animation: modalIn 0.35s cubic-bezier(0.05,0.7,0.1,1) forwards; }
+  @keyframes modalIn {
+    0% { opacity:0; transform:scale(0.93) translateY(20px); }
+    100% { opacity:1; transform:scale(1) translateY(0); }
+  }
+
+  /* Toast */
+  #toast { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(20px); background:#1c1b1b; border:1px solid rgba(49,130,246,0.3); padding:0.85rem 1.75rem; border-radius:9999px; font-size:0.875rem; font-weight:600; color:#e5e2e1; z-index:2000; opacity:0; transition:all 0.4s cubic-bezier(0.05,0.7,0.1,1); pointer-events:none; }
+  #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+  /* Input floating label */
+  .input-field {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom:1px solid rgba(65,71,84,0.55) !important;
+    padding:0.78rem 0.25rem 0.6rem 0.25rem;
+    width:100%;
+    color:#e5e2e1 !important;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:500;
+    line-height:1.2;
+    display:block;
+    -webkit-appearance:none;
+    appearance:none;
+    outline:none;
+    transition:border-color 0.3s, box-shadow 0.3s, transform 0.15s;
+    letter-spacing:-0.01em;
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02);
+    caret-color:#acc7ff;
+  }
+  .input-field::placeholder { color: rgba(193,198,214,0.45) !important; opacity: 1; }
+  .input-field:hover { border-bottom-color: rgba(49,130,246,0.35); }
+  .input-field:focus {
+    border-bottom-color:#3182F6;
+    box-shadow: inset 0 -2px 0 rgba(49,130,246,0.55);
+  }
+  /* Chrome/Safari autofill 배경이 흰색으로 튀는 현상 방지 */
+  .input-field:-webkit-autofill,
+  .input-field:-webkit-autofill:hover,
+  .input-field:-webkit-autofill:focus {
+    -webkit-text-fill-color: #e5e2e1;
+    transition: background-color 600000s 0s, color 600000s 0s;
+    box-shadow: inset 0 -1px 0 rgba(65,71,84,0.55);
+    background-color: transparent;
+  }
+  .input-wrap { position:relative; margin-bottom:2rem; }
+  .input-label { position:absolute; top:0.72rem; left:0.25rem; font-size:0.9rem; color:#8b909f; pointer-events:none; transition:all 0.25s ease; }
+  .input-field:focus + .input-label,
+  .input-field:not(:placeholder-shown) + .input-label { top:-0.75rem; font-size:0.7rem; color:#3182F6; }
+
+  /* Particle canvas */
+  #hero-canvas { position:absolute; inset:0; z-index:0; pointer-events:none; opacity:0.45; }
+
+  /* ---- Hero Load Animation ---- */
+  .hero-enter { opacity: 0; transform: translateY(36px); }
+  .hero-enter.hero-loaded {
+    animation: heroFadeUp 0.85s cubic-bezier(0.05,0.7,0.1,1) forwards;
+  }
+  @keyframes heroFadeUp {
+    from { opacity:0; transform:translateY(36px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .hero-enter.hero-loaded.d1 { animation-delay:0.05s; }
+  .hero-enter.hero-loaded.d2 { animation-delay:0.20s; }
+  .hero-enter.hero-loaded.d3 { animation-delay:0.34s; }
+  .hero-enter.hero-loaded.d4 { animation-delay:0.46s; }
+  .hero-enter.hero-loaded.d5 { animation-delay:0.58s; }
+
+  /* ---- Hero Parallax targets ---- */
+  #hero-badge, #hero-headline, #hero-subtext,
+  #hero-cta, #hero-stats { will-change: transform, opacity; }
+
+  /* ---- Scroll-driven Video Background ---- */
+
+  /*
+   * sticky 대신 fixed 방식 사용
+   * — overflow-x:hidden 이 sticky를 깨뜨리는 문제를 완전히 우회
+   * 동작:
+   *   1) #hero-scroll-wrapper 의 height = 뷰포트 + 스크롤 여행 거리 (JS가 설정)
+   *   2) #hero-sticky 는 viewport 에 fixed 로 고정
+   *   3) 여행 끝나면 .hero-past 클래스 → absolute 로 전환 → 다음 섹션 진입
+   */
+  #hero-scroll-wrapper {
+    position: relative;
+    /* height: JS가 video.duration 기반으로 설정 */
+  }
+
+  #hero-sticky {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: 5;          /* 네비게이션(z-50) 아래 */
+    overflow: hidden;
+  }
+
+  /* 스크롤이 히어로 영역을 벗어나면 absolute 로 전환 */
+  #hero-scroll-wrapper.hero-past #hero-sticky {
+    position: absolute;
+    top: auto; bottom: 0; left: 0;
+    width: 100%; height: 100vh;
+  }
+
+  /* 비디오 — fixed 컨테이너를 꽉 채움 */
+  #hero-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    z-index: 0; display: block;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* 720p 업스케일 화질 보정 — 대비/채도 올려서 선명하게 보임 */
+    filter: contrast(1.12) brightness(1.04) saturate(1.15);
+  }
+
+  /* 오버레이를 살짝 더 어둡게 — 픽셀화 시각적으로 희석 */
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(8,8,8,0.65) 0%,
+      rgba(8,8,8,0.30) 35%,
+      rgba(8,8,8,0.40) 65%,
+      rgba(8,8,8,0.90) 100%
+    ) !important;
+  }
+
+  /* 그라디언트 오버레이 */
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(8,8,8,0.60) 0%,
+      rgba(8,8,8,0.20) 35%,
+      rgba(8,8,8,0.35) 65%,
+      rgba(8,8,8,0.88) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* 하단 진행 바 */
+  #hero-vid-bar {
+    position: absolute; bottom: 0; left: 0;
+    width: 0%; height: 3px; z-index: 10;
+    background: linear-gradient(90deg, #3182F6, #acc7ff);
+  }
+
+  /* 스크롤 힌트 */
+  #hero-scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; display: flex; flex-direction: column;
+    align-items: center; gap: 6px;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  /* Mobile nav */
+  #mobile-menu { max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.05,0.7,0.1,1); }
+  #mobile-menu.open { max-height:400px; }
+
+  /* Dashboard tab */
+  .tab-btn { transition:all 0.25s ease; }
+  .tab-btn.active { background:rgba(49,130,246,0.12); color:#3182F6; }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  /* Channel hover */
+  .channel-card { transition:all 0.3s cubic-bezier(0.05,0.7,0.1,1); }
+  .channel-card:hover { background:#2a2a2a; transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.5); }
+  .channel-dot { transition:all 0.3s ease; opacity:0; transform:scale(0); }
+  .channel-card:hover .channel-dot { opacity:1; transform:scale(1); }
+
+  /* Counter */
+  .counter { font-variant-numeric: tabular-nums; }
+
+  /* OMS flow */
+  .oms-card { transition:all 0.35s cubic-bezier(0.05,0.7,0.1,1); }
+  .oms-card:hover { background:#232323; transform:translateY(-6px); box-shadow:0 20px 48px rgba(0,0,0,0.6); }
+  .oms-card:hover .oms-icon { color:#3182F6; transform:scale(1.1); }
+  .oms-icon { transition:all 0.3s ease; }
+
+  /* Step connector */
+  .step-connector { flex:1; height:1px; background:linear-gradient(90deg, rgba(49,130,246,0.4), rgba(49,130,246,0.1)); margin:0 0.5rem; }
+
+  /* ===== MOBILE RESPONSIVE ===== */
+  @media (max-width: 767px) {
+    /* 히어로 텍스트 */
+    #hero-headline { font-size: 2.6rem !important; line-height: 1.08 !important; }
+    #hero-badge { font-size: 0.65rem !important; }
+    #hero-stats { gap: 1.5rem !important; padding-left: 1rem !important; }
+    #hero-stats .text-3xl { font-size: 1.6rem !important; }
+    #hero-cta { flex-direction: column !important; }
+    #hero-cta button { width: 100% !important; justify-content: center !important; padding: 1rem 1.5rem !important; font-size: 1rem !important; }
+
+    /* 히어로 스크롤 드리븐 모바일 비활성 (height 고정, 비디오 autoplay loop) */
+    #hero-scroll-wrapper { height: 100vh !important; }
+
+    /*
+     * 모바일: sticky 를 fixed 로 두면 JS 가 tick/hero-past 를 건너뛸 때
+     * 스크롤 복원·스크롤해도 히어로가 뷰포트를 덮고 아래 섹션이 안 보임.
+     * wrapper 안 absolute 로 두어 일반 문서 스크롤과 맞춘다.
+     * (.hero-past 규칙보다 구체적으로 잡아 덮음)
+     */
+    #hero-scroll-wrapper #hero-sticky {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      background: radial-gradient(ellipse 120% 80% at 60% 40%, rgba(49,130,246,0.18) 0%, rgba(8,8,8,0) 70%), #080808;
+    }
+
+    /* 모바일: 영상 숨기고 그라디언트 배경으로 대체 */
+    #hero-video { display: none !important; }
+
+    /* 섹션 여백 축소 */
+    .mobile-py { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+
+    /* 대시보드 숫자 오버플로우 방지 */
+    .dashboard-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .dashboard-num { font-size: 1.5rem !important; }
+    .dashboard-badge { display: none; }
+
+    /* 채널 카드 */
+    .channel-card { padding: 1.5rem !important; }
+
+    /* 모달 하단 슬라이드업 */
+    .modal-overlay { align-items: flex-end !important; padding: 0 !important; }
+    .modal-box { border-radius: 1.75rem 1.75rem 0 0 !important; max-height: 92vh; width: 100% !important; max-width: 100% !important; }
+
+    /* 테스티모니얼 패딩 */
+    .testimonial-card { padding: 2rem !important; }
+    .testimonial-card .quote-icon { font-size: 3rem !important; top: 0.75rem !important; right: 0.75rem !important; opacity: 0.06 !important; }
+    .testimonial-card p { padding-right: 2.5rem !important; }
+
+    /* FAQ 패딩 */
+    .faq-item button { padding: 1.25rem 1.5rem !important; font-size: 1rem !important; }
+    .faq-answer { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+    /* 푸터 */
+    .footer-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    .data-bar.animated { animation:none; height:var(--bar-target); }
+    .hero-glow, .status-pulse, .ticker-track { animation:none; }
+  }
+</style>
+</head>
+<body class="bg-background selection:bg-primary/30">
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- ========== NAVBAR ========== -->
+<header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500" style="background:rgba(8,8,8,0); backdrop-filter:blur(0px);">
+  <nav class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 h-20">
+    <!-- Logo -->
+    <a href="#" class="text-2xl font-black tracking-tighter text-white font-headline flex items-center gap-2 z-10" onclick="scrollToSection('hero'); return false;">
+      <span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-xs font-black text-white">M</span>
+      miraise
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center space-x-10">
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('solution'); return false;">솔루션</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('oms'); return false;">OMS</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('channels'); return false;">채널 네트워크</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('team'); return false;">팀</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button class="hidden md:block btn-ghost text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm" onclick="openModal('contact-modal')">도입 문의</button>
+      <button class="btn-primary text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm" onclick="openModal('demo-modal')">무료 체험 시작</button>
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 ml-2" onclick="toggleMobileMenu()" aria-label="메뉴 열기">
+        <span class="ham-line w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="ham-line w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="ham-line w-6 h-0.5 bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-[#0e0e0e] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-4">
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('solution'); toggleMobileMenu(); return false;">솔루션</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('oms'); toggleMobileMenu(); return false;">OMS</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('channels'); toggleMobileMenu(); return false;">채널 네트워크</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('team'); toggleMobileMenu(); return false;">팀</a>
+      <div class="flex gap-3 pt-4 border-t border-white/5">
+        <button class="flex-1 btn-ghost text-white px-4 py-3 rounded-full font-bold font-headline text-sm" onclick="openModal('contact-modal'); toggleMobileMenu();">도입 문의</button>
+        <button class="flex-1 btn-primary text-white px-4 py-3 rounded-full font-bold font-headline text-sm" onclick="openModal('demo-modal'); toggleMobileMenu();">무료 체험</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main style="overflow-x:clip;">
+
+  <!-- ========== HERO — full-screen scroll-driven video ========== -->
+  <div id="hero-scroll-wrapper">
+
+    <div id="hero-sticky">
+      <!-- 1. Video background (scroll-driven) -->
+      <video id="hero-video" src="hero.mp4" muted playsinline preload="auto"></video>
+
+      <!-- 2. Gradient overlay -->
+      <div class="hero-overlay"></div>
+
+      <!-- 3. Content (z-index:2 — overlay 위) -->
+      <section id="hero" style="position:relative;z-index:2;height:100%;width:100%;display:flex;align-items:center;padding-left:1.5rem;padding-right:1.5rem;">
+        <div class="max-w-7xl mx-auto w-full pt-20">
+          <div class="max-w-3xl">
+
+            <div id="hero-badge" class="hero-enter d1 inline-flex items-center gap-2 bg-white/10 border border-white/15 backdrop-blur-sm text-white text-xs font-black rounded-full px-4 py-2 mb-8 font-headline tracking-wider uppercase">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full status-pulse"></span>
+              커머스 운영의 새로운 기준, OMS
+            </div>
+
+            <h1 id="hero-headline" class="hero-enter d2 text-5xl md:text-[5.5rem] font-black font-headline leading-[1.05] tracking-tight text-white mb-6 keep-all">
+              브랜드의 글로벌<br/>진출을, 처음부터<br/>끝까지.
+            </h1>
+
+            <p id="hero-subtext" class="hero-enter d3 text-lg md:text-xl text-white/75 font-body leading-relaxed mb-10 keep-all max-w-2xl">
+              miraise OMS는 주문·재고·물류·정산을 하나의 운영 흐름으로 통합합니다.<br class="hidden md:block"/>
+              한국 브랜드가 글로벌에서 실제로 팔릴 수 있도록, 처음부터 끝까지 함께합니다.
+            </p>
+
+            <div id="hero-cta" class="hero-enter d4 flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-14">
+              <button class="btn-primary text-white px-10 py-5 rounded-full text-lg font-black font-headline flex items-center gap-2" onclick="openModal('demo-modal')">
+                무료 체험 시작
+                <span class="material-symbols-outlined text-xl">arrow_forward</span>
+              </button>
+              <button class="btn-ghost text-white px-10 py-5 rounded-full text-lg font-bold font-headline flex items-center gap-2" onclick="openModal('contact-modal')">
+                <span class="material-symbols-outlined text-xl">calendar_month</span>
+                도입 상담 예약
+              </button>
+            </div>
+
+            <div id="hero-stats" class="hero-enter d5 flex flex-wrap gap-10 border-l border-white/20 pl-8">
+              <div>
+                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="80">0</span>+</div>
+                <div class="text-sm text-white/50 font-medium mt-1">파트너 브랜드</div>
+              </div>
+              <div>
+                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="12">0</span>개+</div>
+                <div class="text-sm text-white/50 font-medium mt-1">진출 국가</div>
+              </div>
+              <div>
+                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="2">0</span>주</div>
+                <div class="text-sm text-white/50 font-medium mt-1">평균 런칭 기간</div>
+              </div>
+              <div>
+                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="99">0</span>.8%</div>
+                <div class="text-sm text-white/50 font-medium mt-1">주문 동기화 정확도</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Video progress bar (bottom edge) -->
+      <div id="hero-vid-bar"></div>
+
+      <!-- 5. Scroll hint (fades on first scroll) -->
+      <div id="hero-scroll-hint">
+        <span class="text-[10px] text-white/35 font-black tracking-[0.25em] uppercase font-headline">스크롤로 영상 재생</span>
+        <span class="material-symbols-outlined text-white/25 text-base animate-bounce">keyboard_arrow_down</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== TICKER ========== -->
+  <div class="py-6 bg-surface-container-low border-y border-white/5 overflow-hidden">
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <div class="flex gap-16 pr-16 items-center text-xs font-black tracking-[0.2em] text-on-surface-variant uppercase font-headline">
+          <span>Amazon</span><span class="text-primary">•</span>
+          <span>Shopee</span><span class="text-primary">•</span>
+          <span>TikTok Shop</span><span class="text-primary">•</span>
+          <span>Lazada</span><span class="text-primary">•</span>
+          <span>Qoo10</span><span class="text-primary">•</span>
+          <span>Rakuten</span><span class="text-primary">•</span>
+          <span>Coupang</span><span class="text-primary">•</span>
+          <span>Tmall</span><span class="text-primary">•</span>
+          <span>주문 자동화</span><span class="text-primary">•</span>
+          <span>재고 동기화</span><span class="text-primary">•</span>
+          <span>선정산 서비스</span><span class="text-primary">•</span>
+          <span>실시간 물류 추적</span><span class="text-primary">•</span>
+          <span>글로벌 통관</span><span class="text-primary">•</span>
+          <span>손익 가시화</span><span class="text-primary">•</span>
+        </div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="flex gap-16 pr-16 items-center text-xs font-black tracking-[0.2em] text-on-surface-variant uppercase font-headline">
+          <span>Amazon</span><span class="text-primary">•</span>
+          <span>Shopee</span><span class="text-primary">•</span>
+          <span>TikTok Shop</span><span class="text-primary">•</span>
+          <span>Lazada</span><span class="text-primary">•</span>
+          <span>Qoo10</span><span class="text-primary">•</span>
+          <span>Rakuten</span><span class="text-primary">•</span>
+          <span>Coupang</span><span class="text-primary">•</span>
+          <span>Tmall</span><span class="text-primary">•</span>
+          <span>주문 자동화</span><span class="text-primary">•</span>
+          <span>재고 동기화</span><span class="text-primary">•</span>
+          <span>선정산 서비스</span><span class="text-primary">•</span>
+          <span>실시간 물류 추적</span><span class="text-primary">•</span>
+          <span>글로벌 통관</span><span class="text-primary">•</span>
+          <span>손익 가시화</span><span class="text-primary">•</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT / PAIN POINTS ========== -->
+  <section id="solution" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 items-start">
+      <div>
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Why miraise</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-10 leading-tight keep-all">
+          글로벌 시장, 혼자<br/>뚫기엔 너무 복잡합니다.
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-on-surface-variant leading-relaxed font-body keep-all mb-10">
+          수많은 플랫폼, 복잡한 통관 절차, 불투명한 정산 주기.<br/>
+          miraise는 브랜드가 제품 경쟁력에만 집중할 수 있도록<br/>
+          복잡한 글로벌 인프라를 하나의 매끄러운 OMS로 통합합니다.
+        </p>
+        <button class="reveal reveal-delay-3 btn-primary text-white px-8 py-4 rounded-full font-bold font-headline flex items-center gap-2" onclick="scrollToSection('oms')">
+          OMS 자세히 보기
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="reveal reveal-delay-1 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">dataset</span>
+          <h3 class="text-lg font-black mb-2 font-headline">원스톱 솔루션</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">진입부터 운영까지 전 과정 통합 관리</p>
+        </div>
+        <div class="reveal reveal-delay-2 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">groups</span>
+          <h3 class="text-lg font-black mb-2 font-headline">실전 중심 팀</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">현지 시장 경험이 풍부한 전문가 조직</p>
+        </div>
+        <div class="reveal reveal-delay-3 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">query_stats</span>
+          <h3 class="text-lg font-black mb-2 font-headline">투명한 데이터</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">실시간 대시보드로 확인하는 매출 지표</p>
+        </div>
+        <div class="reveal reveal-delay-4 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">payments</span>
+          <h3 class="text-lg font-black mb-2 font-headline">선정산 지원</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">빠른 자금 회전으로 성장을 가속화</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DASHBOARD SECTION ========== -->
+  <section class="py-20 md:py-36 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="mb-16">
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Live Dashboard</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">처음부터 끝까지, 한 팀이<br/>함께합니다.</h2>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl keep-all">모든 채널의 매출과 물류 현황을 한눈에 관리하고 실시간으로 대응하세요.</p>
+      </div>
+
+      <!-- Mock Dashboard -->
+      <div class="reveal reveal-delay-1 relative bg-surface rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/10 mb-16">
+        <!-- Dashboard Header -->
+        <div class="p-5 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-low flex-wrap gap-3">
+          <div class="flex gap-2 flex-wrap">
+            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider active font-headline" data-tab="total" onclick="switchTab(this,'total')">통합 매출</button>
+            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="amazon" onclick="switchTab(this,'amazon')">아마존 US</button>
+            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="shopee" onclick="switchTab(this,'shopee')">쇼피 SG</button>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 text-xs font-medium text-on-surface-variant">
+              <span class="material-symbols-outlined text-base">calendar_today</span>
+              최근 30일
+            </div>
+            <button class="text-xs text-primary font-bold flex items-center gap-1 hover:opacity-70 transition-opacity" onclick="showToast('리포트 다운로드 준비 중입니다.')">
+              <span class="material-symbols-outlined text-base">download</span> 리포트 내보내기
+            </button>
+          </div>
+        </div>
+
+        <div class="p-8 md:p-12">
+          <!-- Tab: Total -->
+          <div class="tab-panel active" id="tab-total">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-14">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">순매출</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩142.5M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+12.4%</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">2,840</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">전환율</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">4.2%</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">재고 회전율</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">8.3x</div>
+              </div>
+            </div></div>
+            <div class="h-56 md:h-64 flex items-end justify-between gap-2 md:gap-4 chart-grid rounded-lg px-1" id="chart-bars">
+              <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-1"></div>
+              <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-2"></div>
+              <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-3"></div>
+              <div class="w-full bg-primary rounded-t-sm data-bar bar-4" style="box-shadow:0 0 24px rgba(49,130,246,0.4)"></div>
+              <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-5"></div>
+              <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-6"></div>
+              <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-7"></div>
+            </div>
+          </div>
+
+          <!-- Tab: Amazon -->
+          <div class="tab-panel" id="tab-amazon">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-14">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">아마존 매출</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩87.2M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+18.1%</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">1,620</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">FBA 재고율</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">94%</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">BSR 순위</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">#142</div>
+              </div>
+            </div></div>
+            <div class="flex items-center justify-center h-56 md:h-64 text-on-surface-variant/30 font-black font-headline text-2xl">
+              아마존 주간 추이 차트
+            </div>
+          </div>
+
+          <!-- Tab: Shopee -->
+          <div class="tab-panel" id="tab-shopee">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-14">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">쇼피 매출</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩55.3M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+7.8%</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">1,220</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">배송 완료율</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">98.2%</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">CS 응답률</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">99.1%</div>
+              </div>
+            </div></div>
+            <div class="flex items-center justify-center h-56 md:h-64 text-on-surface-variant/30 font-black font-headline text-2xl">
+              쇼피 주간 추이 차트
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Features -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+        <div class="reveal reveal-delay-1 space-y-3">
+          <div class="text-primary font-black font-headline tracking-tighter text-xl">01</div>
+          <h4 class="text-xl font-black font-headline">멀티채널 통합 관리</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">아마존, 쇼피, 큐텐 등 전 세계 주요 채널을 하나의 ID로 관리합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-2 space-y-3">
+          <div class="text-primary font-black font-headline tracking-tighter text-xl">02</div>
+          <h4 class="text-xl font-black font-headline">물류 자동화</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">풀필먼트 연동을 통해 주문부터 최종 배송까지의 프로세스를 자동화합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-3 space-y-3">
+          <div class="text-primary font-black font-headline tracking-tighter text-xl">03</div>
+          <h4 class="text-xl font-black font-headline">관세·통관 신고</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">국가별로 상이한 법규를 완벽히 준수하여 안전하게 수출을 진행합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-4 space-y-3">
+          <div class="text-primary font-black font-headline tracking-tighter text-xl">04</div>
+          <h4 class="text-xl font-black font-headline">선정산 서비스</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">판매 즉시 정산금을 조기에 지급하여 브랜드의 현금 흐름을 개선합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OMS SECTION ========== -->
+  <section id="oms" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="mb-16">
+      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">OMS Core</div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-8 keep-all">커머스 운영의 핵심,<br/>OMS로 연결합니다.</h2>
+      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-3xl keep-all">주문 수집부터 재고 동기화, 출고 지시, 반품 회수까지. miraise OMS는 채널-물류-정산 데이터를 하나의 운영 흐름으로 통합합니다.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      <div class="reveal reveal-delay-1 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card cursor-pointer" onclick="openModal('oms-modal-1')">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-sm text-primary font-black font-headline">Order Hub</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">inbox</span>
+        </div>
+        <h3 class="text-2xl font-black font-headline mb-4">주문 통합 수집</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">아마존, 쇼피, 틱톡샵 주문을 실시간으로 수집하고 중복/누락 없이 단일 큐로 관리합니다.</p>
+        <div class="mt-6 text-primary text-xs font-black flex items-center gap-1 font-headline">자세히 보기 <span class="material-symbols-outlined text-base">arrow_forward</span></div>
+      </div>
+      <div class="reveal reveal-delay-2 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card cursor-pointer" onclick="openModal('oms-modal-2')">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-sm text-primary font-black font-headline">Stock Brain</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">inventory_2</span>
+        </div>
+        <h3 class="text-2xl font-black font-headline mb-4">재고·출고 자동화</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">창고별 가용 재고를 자동 계산하고 SLA 기준으로 최적 출고지를 추천해 품절과 지연을 줄입니다.</p>
+        <div class="mt-6 text-primary text-xs font-black flex items-center gap-1 font-headline">자세히 보기 <span class="material-symbols-outlined text-base">arrow_forward</span></div>
+      </div>
+      <div class="reveal reveal-delay-3 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card cursor-pointer" onclick="openModal('oms-modal-3')">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-sm text-primary font-black font-headline">Finance Sync</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">account_balance</span>
+        </div>
+        <h3 class="text-2xl font-black font-headline mb-4">정산·손익 가시화</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">채널 수수료, 물류비, 프로모션 비용을 자동 매칭해 SKU별 실질 마진을 투명하게 보여줍니다.</p>
+        <div class="mt-6 text-primary text-xs font-black flex items-center gap-1 font-headline">자세히 보기 <span class="material-symbols-outlined text-base">arrow_forward</span></div>
+      </div>
+    </div>
+
+    <!-- KPI Bar -->
+    <div class="reveal reveal-delay-4 p-8 bg-surface rounded-2xl border border-outline-variant/15">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-3xl font-black font-headline text-on-surface counter" data-target-text="99.8%">99.8%</div>
+          <div class="text-sm text-on-surface-variant mt-1">주문 동기화 정확도</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black font-headline text-on-surface">-37%</div>
+          <div class="text-sm text-on-surface-variant mt-1">오출고 감소율</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black font-headline text-on-surface">D+1</div>
+          <div class="text-sm text-on-surface-variant mt-1">표준 정산 리포트</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black font-headline text-on-surface">24/7</div>
+          <div class="text-sm text-on-surface-variant mt-1">운영 모니터링</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="py-20 md:py-36 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="mb-20 text-center">
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Process</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">온보딩부터 글로벌 매출까지,<br/>4단계로 완성됩니다.</h2>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">복잡한 과정을 miraise가 대신합니다. 브랜드는 제품에만 집중하세요.</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="reveal reveal-delay-1 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-xl">rocket_launch</span>
+          </div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 01</div>
+          <h4 class="text-xl font-black font-headline mb-3">무료 진단 상담</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">브랜드 현황, 목표 시장, 제품 카테고리를 분석해 맞춤형 글로벌 전략을 수립합니다.</p>
+          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">~ 1주</div>
+        </div>
+        <div class="reveal reveal-delay-2 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-xl">integration_instructions</span>
+          </div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 02</div>
+          <h4 class="text-xl font-black font-headline mb-3">채널·OMS 연동</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">아마존, 쇼피 등 목표 채널 셀러 계정을 개설하고 miraise OMS와 완전히 통합합니다.</p>
+          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">~ 1주</div>
+        </div>
+        <div class="reveal reveal-delay-3 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-xl">local_shipping</span>
+          </div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 03</div>
+          <h4 class="text-xl font-black font-headline mb-3">물류 셋업 & 런칭</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">현지 창고 입고부터 통관, 첫 주문 처리까지 miraise 팀이 전담합니다.</p>
+          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">~ 2주</div>
+        </div>
+        <div class="reveal reveal-delay-4 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-xl">trending_up</span>
+          </div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 04</div>
+          <h4 class="text-xl font-black font-headline mb-3">운영·성장 최적화</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">데이터 기반 광고 최적화, 재고 예측, 선정산으로 지속적인 성장을 지원합니다.</p>
+          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">상시 운영</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-5 mt-12 text-center">
+        <button class="btn-primary text-white px-10 py-5 rounded-full text-lg font-black font-headline" onclick="openModal('demo-modal')">
+          지금 무료 진단 받기
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY SECTION ========== -->
+  <section class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20">
+      <h2 class="reveal text-4xl md:text-5xl font-black font-headline text-on-surface leading-tight keep-all">
+        해외 판매, 시작은 쉬워도<br/>유지는 어렵습니다.
+      </h2>
+      <div class="space-y-10">
+        <div class="reveal reveal-delay-1 flex gap-7">
+          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">01</div>
+          <div>
+            <h4 class="text-xl font-black mb-2 font-headline">지속 불가능한 마케팅 비용</h4>
+            <p class="text-on-surface-variant leading-relaxed keep-all">데이터 분석 없는 단순 노출 위주의 집행은 수익성 악화의 가장 큰 원인입니다.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2 flex gap-7">
+          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">02</div>
+          <div>
+            <h4 class="text-xl font-black mb-2 font-headline">현지 CS 대응 실패</h4>
+            <p class="text-on-surface-variant leading-relaxed keep-all">현지 언어와 문화에 대한 깊은 이해 없는 고객 응대는 브랜드 신뢰도를 급격히 하락시킵니다.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-3 flex gap-7">
+          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">03</div>
+          <div>
+            <h4 class="text-xl font-black mb-2 font-headline">재고 관리의 복잡성</h4>
+            <p class="text-on-surface-variant leading-relaxed keep-all">과다 재고는 직접적인 비용 부담으로, 잦은 품절은 알고리즘 노출도 하락으로 이어집니다.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-4 flex gap-7">
+          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">04</div>
+          <div>
+            <h4 class="text-xl font-black mb-2 font-headline">불규칙한 자금 회전</h4>
+            <p class="text-on-surface-variant leading-relaxed keep-all">해외 플랫폼의 긴 정산 주기는 공격적인 재투자와 성장을 가로막는 병목이 됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CHANNELS ========== -->
+  <section id="channels" class="py-20 md:py-36 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="mb-20 text-center">
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Global Channels</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">
+          전 세계 모든 주요 채널에<br/>당신의 브랜드를 연결합니다.
+        </h2>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">miraise OMS 하나로 8개 이상 플랫폼을 동시에 운영하세요.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('아마존 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">AMAZON</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Global</div>
+          <div class="text-[10px] text-on-surface-variant/40">US · JP · EU · SG</div>
+        </div>
+        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('쇼피 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">SHOPEE</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">S.E. Asia</div>
+          <div class="text-[10px] text-on-surface-variant/40">SG · MY · TH · PH</div>
+        </div>
+        <div class="reveal reveal-delay-3 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('큐텐 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">Qoo10</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Japan</div>
+          <div class="text-[10px] text-on-surface-variant/40">JP · SG</div>
+        </div>
+        <div class="reveal reveal-delay-4 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('라자다 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">LAZADA</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">S.E. Asia</div>
+          <div class="text-[10px] text-on-surface-variant/40">TH · ID · VN</div>
+        </div>
+        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('틱톡샵 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter text-center">TIKTOK SHOP</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Social Commerce</div>
+          <div class="text-[10px] text-on-surface-variant/40">US · UK · SG</div>
+        </div>
+        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('라쿠텐 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">RAKUTEN</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Japan</div>
+          <div class="text-[10px] text-on-surface-variant/40">JP</div>
+        </div>
+        <div class="reveal reveal-delay-3 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('쿠팡 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">COUPANG</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Taiwan</div>
+          <div class="text-[10px] text-on-surface-variant/40">TW</div>
+        </div>
+        <div class="reveal reveal-delay-4 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('티몰 채널 연동 문의를 남겨주세요.')">
+          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+          <div class="text-lg font-black font-headline tracking-tighter">TMALL</div>
+          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">China</div>
+          <div class="text-[10px] text-on-surface-variant/40">CN</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-5 mt-8 p-6 bg-surface-container-low/50 rounded-2xl border border-dashed border-outline-variant/30 flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <div class="font-black text-on-surface font-headline">다른 채널을 사용 중이신가요?</div>
+          <div class="text-sm text-on-surface-variant mt-1">새로운 채널 연동 요청을 보내주세요. 빠르게 검토하겠습니다.</div>
+        </div>
+        <button class="btn-ghost text-white px-7 py-3 rounded-full font-bold font-headline text-sm flex items-center gap-2" onclick="openModal('contact-modal')">
+          <span class="material-symbols-outlined text-base">add_circle</span> 채널 추가 요청
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEAM ========== -->
+  <section id="team" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="mb-20">
+      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Team</div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface keep-all">함께 만드는 글로벌 성공 사례.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-14">
+      <div class="reveal reveal-delay-1 flex flex-col items-start group">
+        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-7 text-3xl font-black text-primary font-headline group-hover:scale-105 transition-transform duration-300 group-hover:bg-primary/20">K</div>
+        <div class="text-2xl font-black mb-1 font-headline">김민수</div>
+        <div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">CEO</div>
+        <p class="text-on-surface-variant leading-relaxed keep-all">한국 브랜드의 글로벌 스케일업을 통해 새로운 시장 기회를 창출하는 비전가입니다. 전 아마존 셀러 전략 파트너.</p>
+        <button class="mt-5 text-primary text-xs font-black flex items-center gap-1 font-headline hover:opacity-70 transition-opacity" onclick="showToast('LinkedIn 프로필로 연결 중...')">
+          <span class="material-symbols-outlined text-base">open_in_new</span> LinkedIn
+        </button>
+      </div>
+      <div class="reveal reveal-delay-2 flex flex-col items-start group">
+        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-7 text-3xl font-black text-primary font-headline group-hover:scale-105 transition-transform duration-300 group-hover:bg-primary/20">L</div>
+        <div class="text-2xl font-black mb-1 font-headline">이서연</div>
+        <div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">Logistics Lead</div>
+        <p class="text-on-surface-variant leading-relaxed keep-all">복잡한 국경 간 물류 네트워크를 단순하고 투명하게 설계하는 전문가입니다. 전 CJ대한통운 해외물류팀.</p>
+        <button class="mt-5 text-primary text-xs font-black flex items-center gap-1 font-headline hover:opacity-70 transition-opacity" onclick="showToast('LinkedIn 프로필로 연결 중...')">
+          <span class="material-symbols-outlined text-base">open_in_new</span> LinkedIn
+        </button>
+      </div>
+      <div class="reveal reveal-delay-3 flex flex-col items-start group">
+        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-7 text-3xl font-black text-primary font-headline group-hover:scale-105 transition-transform duration-300 group-hover:bg-primary/20">P</div>
+        <div class="text-2xl font-black mb-1 font-headline">박준형</div>
+        <div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">Marketing Director</div>
+        <p class="text-on-surface-variant leading-relaxed keep-all">데이터 기반의 철저한 현지화 마케팅으로 브랜드의 실제 판매 가치를 극대화합니다. 전 카카오커머스 그로스.</p>
+        <button class="mt-5 text-primary text-xs font-black flex items-center gap-1 font-headline hover:opacity-70 transition-opacity" onclick="showToast('LinkedIn 프로필로 연결 중...')">
+          <span class="material-symbols-outlined text-base">open_in_new</span> LinkedIn
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="py-20 md:py-36 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="mb-20 text-center">
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Success Stories</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface keep-all">수많은 브랜드들이 이미<br/>성장을 경험하고 있습니다.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <div class="reveal reveal-delay-1 p-8 md:p-12 bg-surface-container rounded-3xl relative overflow-hidden border border-white/5 testimonial-card">
+          <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface/4 absolute top-6 right-6 md:right-8">format_quote</span>
+          <p class="text-xl font-bold leading-[1.7] mb-12 relative z-10 keep-all pr-16 md:pr-28">
+            "수출 초기에 겪었던 물류와 정산의 불확실성이 miraise를 만난 후 완벽히 해소되었습니다. 이제는 제품 기획과 본질적인 브랜드 가치에만 전념하고 있습니다."
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-surface-bright rounded-full flex items-center justify-center font-black text-primary font-headline">A</div>
+            <div>
+              <div class="font-black text-base font-headline">A 뷰티 브랜드</div>
+              <div class="text-sm text-on-surface-variant font-medium">대표이사 · 아마존 US 진출</div>
+            </div>
+            <div class="ml-auto text-right">
+              <div class="text-2xl font-black text-primary font-headline">+340%</div>
+              <div class="text-xs text-on-surface-variant">6개월 매출 성장</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2 p-8 md:p-12 bg-gradient-to-br from-[#3182F6]/15 to-surface-container rounded-3xl relative overflow-hidden border border-[#3182F6]/25 testimonial-card">
+          <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface/8 absolute top-6 right-6 md:right-8">format_quote</span>
+          <p class="text-xl font-bold leading-[1.7] mb-12 relative z-10 text-white keep-all pr-16 md:pr-28">
+            "아마존 진출 3개월 만에 월 매출 1억 원을 달성했습니다. miraise만의 정교한 데이터 분석과 현지화 전략이 없었다면 불가능했을 결과입니다."
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-black text-primary font-headline">B</div>
+            <div>
+              <div class="font-black text-base text-white font-headline">B 건강기능식품 브랜드</div>
+              <div class="text-sm text-white/50 font-medium">운영 총괄 팀장 · 쇼피 SG 진출</div>
+            </div>
+            <div class="ml-auto text-right">
+              <div class="text-2xl font-black text-primary font-headline">₩1억</div>
+              <div class="text-xs text-white/50">월 매출 3개월 달성</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra testimonial row -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal reveal-delay-1 p-6 md:p-8 bg-surface-container-low rounded-2xl border border-white/5">
+          <div class="flex gap-1 mb-4">
+            <span class="text-primary text-sm">★★★★★</span>
+          </div>
+          <p class="text-base font-medium leading-relaxed mb-6 text-on-surface-variant keep-all">"OMS 연동 이후 주문 처리 시간이 70% 단축됐습니다. 팀 리소스를 마케팅에 집중할 수 있게 됐어요."</p>
+          <div class="font-black text-sm font-headline">C 패션 브랜드</div>
+          <div class="text-xs text-on-surface-variant">이커머스 팀장 · 틱톡샵 US</div>
+        </div>
+        <div class="reveal reveal-delay-2 p-8 bg-surface-container-low rounded-2xl border border-white/5">
+          <div class="flex gap-1 mb-4">
+            <span class="text-primary text-sm">★★★★★</span>
+          </div>
+          <p class="text-base font-medium leading-relaxed mb-6 text-on-surface-variant keep-all">"선정산 덕분에 재고 투자를 2배로 늘릴 수 있었어요. 자금 회전이 이렇게 편해질 줄 몰랐습니다."</p>
+          <div class="font-black text-sm font-headline">D 생활용품 브랜드</div>
+          <div class="text-xs text-on-surface-variant">CFO · 아마존 JP 진출</div>
+        </div>
+        <div class="reveal reveal-delay-3 p-8 bg-surface-container-low rounded-2xl border border-white/5">
+          <div class="flex gap-1 mb-4">
+            <span class="text-primary text-sm">★★★★★</span>
+          </div>
+          <p class="text-base font-medium leading-relaxed mb-6 text-on-surface-variant keep-all">"쇼피 입점부터 첫 매출까지 2주밖에 걸리지 않았어요. miraise 팀의 스피드와 전문성에 놀랐습니다."</p>
+          <div class="font-black text-sm font-headline">E 식품 브랜드</div>
+          <div class="text-xs text-on-surface-variant">대표 · 쇼피 SG·MY 동시 진출</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="py-20 md:py-36 px-6 md:px-10 max-w-4xl mx-auto">
+    <div class="mb-16">
+      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">FAQ</div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface keep-all">자주 묻는 질문</h2>
+    </div>
+
+    <div class="space-y-2" id="faq-container">
+      <div class="reveal faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
+        <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
+          miraise OMS는 어떤 기업에 적합한가요?
+          <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
+        </button>
+        <div class="faq-answer px-7 pb-7">
+          <p class="text-on-surface-variant leading-relaxed keep-all">해외 판매를 시작하거나 이미 진행 중인 국내 브랜드라면 누구나 적합합니다. 특히 멀티채널 운영, 재고 관리 비효율, 정산 지연으로 어려움을 겪는 브랜드에 최적화되어 있습니다. 월 주문 100건 이상의 규모부터 대형 브랜드까지 모두 지원합니다.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
+        <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
+          OMS 연동에는 얼마나 걸리나요?
+          <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
+        </button>
+        <div class="faq-answer px-7 pb-7">
+          <p class="text-on-surface-variant leading-relaxed keep-all">대부분의 채널 연동은 영업일 기준 3~5일 이내에 완료됩니다. 초기 온보딩부터 첫 주문 처리까지 전체 셋업 기간은 평균 2주입니다. miraise 팀이 모든 기술 연동을 담당하므로 별도 개발 리소스가 필요하지 않습니다.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
+        <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
+          선정산 서비스는 어떻게 이용하나요?
+          <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
+        </button>
+        <div class="faq-answer px-7 pb-7">
+          <p class="text-on-surface-variant leading-relaxed keep-all">miraise Finance Sync가 플랫폼별 정산 데이터를 자동 수집하고, 영업일 기준 D+1에 조기 정산을 지원합니다. 별도 신청 없이 OMS 계약 체결 시 자동으로 활성화되며, 한도 및 수수료는 매출 규모에 따라 맞춤 설정됩니다.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
+        <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
+          어떤 물류 파트너와 연동되나요?
+          <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
+        </button>
+        <div class="faq-answer px-7 pb-7">
+          <p class="text-on-surface-variant leading-relaxed keep-all">CJ대한통운, 한진, 롯데글로벌로지스 등 국내 주요 물류사와 DHL, FedEx, UPS, 현지 라스트마일 파트너까지 20개 이상의 물류사와 연동되어 있습니다. Amazon FBA, Shopee Fulfillment 등 플랫폼 자체 풀필먼트도 지원합니다.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-4 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
+        <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
+          계약 최소 기간이 있나요?
+          <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
+        </button>
+        <div class="faq-answer px-7 pb-7">
+          <p class="text-on-surface-variant leading-relaxed keep-all">기본 계약 기간은 6개월이며, 이후 월 단위 갱신이 가능합니다. 처음 시작하시는 분들을 위해 2주 무료 체험 프로그램을 운영하고 있습니다. 계약 중도 해지 시 별도 위약금은 없으나 선정산 잔액 정산 절차가 필요합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal mt-10 text-center">
+      <p class="text-on-surface-variant mb-4">더 궁금한 점이 있으신가요?</p>
+      <button class="btn-ghost text-white px-8 py-4 rounded-full font-bold font-headline flex items-center gap-2 mx-auto" onclick="openModal('contact-modal')">
+        <span class="material-symbols-outlined text-base">chat</span> 직접 문의하기
+      </button>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="py-24 md:py-48 relative overflow-hidden">
+    <div class="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none">
+      <div class="w-[900px] h-[900px] bg-[#3182F6]/8 rounded-full blur-[160px]"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 md:px-10 text-center">
+      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-8 uppercase font-headline">Get Started</div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-7xl font-black font-headline text-on-surface mb-10 tracking-tight keep-all">
+        글로벌 진출,<br/>지금 바로 시작하세요.
+      </h2>
+      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant mb-14 keep-all">2주 무료 체험으로 miraise OMS를 직접 경험해보세요.<br/>설치나 계약 없이 바로 시작할 수 있습니다.</p>
+      <div class="reveal reveal-delay-3 flex flex-col md:flex-row items-center justify-center gap-5">
+        <button class="w-full md:w-auto btn-primary text-white px-14 py-6 rounded-full text-xl font-black font-headline flex items-center justify-center gap-3" onclick="openModal('demo-modal')">
+          무료 체험 시작하기
+          <span class="material-symbols-outlined text-xl">arrow_forward</span>
+        </button>
+        <button class="w-full md:w-auto btn-ghost text-white px-14 py-6 rounded-full text-xl font-bold font-headline" onclick="openModal('contact-modal')">
+          도입 문의하기
+        </button>
+      </div>
+      <p class="reveal reveal-delay-4 mt-8 text-sm text-on-surface-variant/40">신용카드 불필요 · 2주 무료 · 언제든 해지 가능</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#080808] border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
+    <div class="grid md:grid-cols-4 gap-8 md:gap-16 mb-12 md:mb-16 footer-grid">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-xs font-black text-white">M</span>
+          <div class="text-2xl font-black text-white tracking-tighter font-headline">miraise</div>
+        </div>
+        <p class="text-sm text-white/40 font-medium leading-relaxed mb-6">글로벌 커머스 운영 시스템.<br/>한국 브랜드의 글로벌 성공을 처음부터 끝까지 함께합니다.</p>
+        <div class="flex gap-3">
+          <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('LinkedIn으로 이동 중...')">
+            <span class="text-white/40 text-xs font-black">in</span>
+          </button>
+          <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('Twitter로 이동 중...')">
+            <span class="text-white/40 text-xs font-black">𝕏</span>
+          </button>
+          <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('Instagram으로 이동 중...')">
+            <span class="material-symbols-outlined text-white/40 text-base">photo_camera</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="font-black text-white mb-5 font-headline tracking-tight">서비스</div>
+        <div class="space-y-3">
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('solution')">솔루션 소개</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('oms')">OMS 기능</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('channels')">채널 네트워크</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('요금제 페이지 준비 중입니다.')">요금제</button>
+        </div>
+      </div>
+      <div>
+        <div class="font-black text-white mb-5 font-headline tracking-tight">고객지원</div>
+        <div class="space-y-3">
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="openModal('contact-modal')">도입 문의</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('고객센터: support@miraise.io')">고객센터</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('문서 페이지로 이동 중...')">개발자 문서</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('블로그로 이동 중...')">블로그</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="p-8 bg-surface-container-low rounded-2xl border border-white/5 mb-12">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
+        <div>
+          <div class="font-black text-white font-headline mb-1">글로벌 커머스 인사이트 뉴스레터</div>
+          <div class="text-sm text-on-surface-variant">매주 최신 글로벌 커머스 트렌드와 운영 팁을 받아보세요.</div>
+        </div>
+        <div class="flex gap-3 w-full md:w-auto">
+          <input id="newsletter-email" type="email" placeholder="이메일 주소 입력" class="input-field flex-1 md:w-64 text-sm placeholder:text-on-surface-variant/40"/>
+          <button id="newsletter-btn" class="btn-primary text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm flex-shrink-0" onclick="subscribeNewsletter()">구독하기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/30">
+      <p class="font-headline font-medium">© 2025 miraise Inc. All rights reserved. Global Commerce Operating System.</p>
+      <div class="flex gap-6">
+        <button class="hover:text-primary transition-colors font-bold font-headline" onclick="showToast('개인정보처리방침 페이지로 이동 중...')">Privacy Policy</button>
+        <button class="hover:text-primary transition-colors font-bold font-headline" onclick="showToast('이용약관 페이지로 이동 중...')">Terms of Service</button>
+        <button class="hover:text-primary transition-colors font-bold font-headline" onclick="openModal('contact-modal')">Contact Us</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== MODALS ========== -->
+
+<!-- Demo Modal -->
+<div id="demo-modal" class="modal-overlay" onclick="closeModalOnOverlay(event, 'demo-modal')">
+  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative max-h-[90vh] overflow-y-auto">
+    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('demo-modal')">
+      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
+    </button>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Free Trial</div>
+    <h3 class="text-3xl font-black font-headline mb-2">무료 체험 시작하기</h3>
+    <p class="text-on-surface-variant mb-8 text-sm">2주 무료 체험. 신용카드 불필요.</p>
+    <form onsubmit="submitDemo(event)">
+      <div class="input-wrap">
+        <input class="input-field" type="text" id="demo-name" placeholder=" " required/>
+        <label class="input-label" for="demo-name">담당자 이름 *</label>
+      </div>
+      <div class="input-wrap">
+        <input class="input-field" type="email" id="demo-email" placeholder=" " required/>
+        <label class="input-label" for="demo-email">업무용 이메일 *</label>
+      </div>
+      <div class="input-wrap">
+        <input class="input-field" type="text" id="demo-company" placeholder=" " required/>
+        <label class="input-label" for="demo-company">회사명 *</label>
+      </div>
+      <div class="mb-8">
+        <div class="text-sm text-on-surface-variant mb-3 font-medium">관심 채널 (복수 선택 가능)</div>
+        <div class="flex flex-wrap gap-2" id="channel-select">
+          <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">Amazon</button>
+          <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">Shopee</button>
+          <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">TikTok Shop</button>
+          <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">Lazada</button>
+          <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">Qoo10</button>
+          <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">기타</button>
+        </div>
+      </div>
+      <button type="submit" class="w-full btn-primary text-white py-4 rounded-full font-black font-headline text-base flex items-center justify-center gap-2">
+        무료 체험 신청하기
+        <span class="material-symbols-outlined text-xl">arrow_forward</span>
+      </button>
+      <p class="text-center text-xs text-on-surface-variant/40 mt-4">제출 시 <button type="button" class="text-primary hover:opacity-70" onclick="showToast('이용약관 페이지로 이동 중...')">이용약관</button> 및 <button type="button" class="text-primary hover:opacity-70" onclick="showToast('개인정보처리방침 페이지로 이동 중...')">개인정보처리방침</button>에 동의하게 됩니다.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="contact-modal" class="modal-overlay" onclick="closeModalOnOverlay(event, 'contact-modal')">
+  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative max-h-[90vh] overflow-y-auto">
+    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('contact-modal')">
+      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
+    </button>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Contact</div>
+    <h3 class="text-3xl font-black font-headline mb-2">도입 문의하기</h3>
+    <p class="text-on-surface-variant mb-8 text-sm">담당자가 영업일 기준 1일 이내에 연락드립니다.</p>
+    <form onsubmit="submitContact(event)">
+      <div class="input-wrap">
+        <input class="input-field" type="text" id="contact-name" placeholder=" " required/>
+        <label class="input-label" for="contact-name">담당자 이름 *</label>
+      </div>
+      <div class="input-wrap">
+        <input class="input-field" type="email" id="contact-email" placeholder=" " required/>
+        <label class="input-label" for="contact-email">업무용 이메일 *</label>
+      </div>
+      <div class="input-wrap">
+        <input class="input-field" type="tel" id="contact-phone" placeholder=" "/>
+        <label class="input-label" for="contact-phone">연락처 (선택)</label>
+      </div>
+      <div class="mb-8">
+        <div class="text-sm text-on-surface-variant mb-3 font-medium">문의 유형</div>
+        <div class="grid grid-cols-2 gap-2">
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant/30 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+            <input type="radio" name="inquiry-type" value="oms" class="hidden" checked/>
+            <span class="w-3.5 h-3.5 rounded-full border-2 border-current flex items-center justify-center radio-indicator"><span class="w-1.5 h-1.5 rounded-full bg-primary hidden"></span></span>
+            <span class="text-xs font-black font-headline">OMS 도입</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant/30 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+            <input type="radio" name="inquiry-type" value="channel" class="hidden"/>
+            <span class="w-3.5 h-3.5 rounded-full border-2 border-current flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-primary hidden"></span></span>
+            <span class="text-xs font-black font-headline">채널 진출 컨설팅</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant/30 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+            <input type="radio" name="inquiry-type" value="logistics" class="hidden"/>
+            <span class="w-3.5 h-3.5 rounded-full border-2 border-current flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-primary hidden"></span></span>
+            <span class="text-xs font-black font-headline">물류·통관</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant/30 cursor-pointer hover:border-primary/40 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+            <input type="radio" name="inquiry-type" value="other" class="hidden"/>
+            <span class="w-3.5 h-3.5 rounded-full border-2 border-current flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-primary hidden"></span></span>
+            <span class="text-xs font-black font-headline">기타 문의</span>
+          </label>
+        </div>
+      </div>
+      <div class="input-wrap">
+        <textarea class="input-field resize-none" id="contact-message" placeholder=" " rows="3"></textarea>
+        <label class="input-label" for="contact-message">추가 메시지 (선택)</label>
+      </div>
+      <button type="submit" class="w-full btn-primary text-white py-4 rounded-full font-black font-headline text-base flex items-center justify-center gap-2">
+        문의 보내기
+        <span class="material-symbols-outlined text-xl">send</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- OMS Detail Modal 1 -->
+<div id="oms-modal-1" class="modal-overlay" onclick="closeModalOnOverlay(event, 'oms-modal-1')">
+  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative">
+    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('oms-modal-1')">
+      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
+    </button>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Order Hub</div>
+    <h3 class="text-3xl font-black font-headline mb-4">주문 통합 수집</h3>
+    <p class="text-on-surface-variant leading-relaxed mb-8 keep-all">miraise Order Hub는 아마존, 쇼피, 틱톡샵을 포함한 8개 이상의 글로벌 채널에서 주문을 실시간으로 수집합니다.</p>
+    <div class="space-y-3 mb-8">
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">채널별 주문을 단일 큐로 통합, 중복/누락 없음</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">1분 이내 실시간 주문 동기화 (API 폴링)</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">주문 상태 자동 분류 및 우선순위 정렬</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">이상 주문 자동 감지 및 알림</span></div>
+    </div>
+    <button class="w-full btn-primary text-white py-4 rounded-full font-black font-headline" onclick="closeModal('oms-modal-1'); openModal('demo-modal')">무료 체험으로 경험하기</button>
+  </div>
+</div>
+
+<!-- OMS Detail Modal 2 -->
+<div id="oms-modal-2" class="modal-overlay" onclick="closeModalOnOverlay(event, 'oms-modal-2')">
+  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative">
+    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('oms-modal-2')">
+      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
+    </button>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Stock Brain</div>
+    <h3 class="text-3xl font-black font-headline mb-4">재고·출고 자동화</h3>
+    <p class="text-on-surface-variant leading-relaxed mb-8 keep-all">AI 기반 재고 예측 엔진이 창고별 가용 재고를 자동 계산하고 최적 출고지를 추천합니다.</p>
+    <div class="space-y-3 mb-8">
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">멀티 창고 통합 재고 관리 (국내·해외 창고)</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">SLA 기반 자동 출고지 추천으로 배송 지연 최소화</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">AI 재고 소진 예측 및 발주 자동화</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">오출고율 -37% 달성 (평균 고객사 기준)</span></div>
+    </div>
+    <button class="w-full btn-primary text-white py-4 rounded-full font-black font-headline" onclick="closeModal('oms-modal-2'); openModal('demo-modal')">무료 체험으로 경험하기</button>
+  </div>
+</div>
+
+<!-- OMS Detail Modal 3 -->
+<div id="oms-modal-3" class="modal-overlay" onclick="closeModalOnOverlay(event, 'oms-modal-3')">
+  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative">
+    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('oms-modal-3')">
+      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
+    </button>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Finance Sync</div>
+    <h3 class="text-3xl font-black font-headline mb-4">정산·손익 가시화</h3>
+    <p class="text-on-surface-variant leading-relaxed mb-8 keep-all">채널별 복잡한 수수료 구조를 자동 매칭하여 SKU별 실질 마진을 투명하게 보여줍니다.</p>
+    <div class="space-y-3 mb-8">
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">채널 수수료·물류비·광고비 자동 매칭</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">SKU별 실질 마진 리포트 (D+1 기준)</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">선정산 서비스로 현금 흐름 최적화</span></div>
+      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">다중 통화 자동 환산 및 환차손 분석</span></div>
+    </div>
+    <button class="w-full btn-primary text-white py-4 rounded-full font-black font-headline" onclick="closeModal('oms-modal-3'); openModal('demo-modal')">무료 체험으로 경험하기</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+<!-- Email resend status (Best-effort; needs /api/resend on backend) -->
+<div id="email-status" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[2001] px-4">
+  <div class="bg-[#131313] border border-white/10 rounded-full backdrop-blur-xl px-5 py-3 shadow-2xl shadow-black/40 flex items-center gap-3 sm:gap-4 max-w-[92vw]">
+    <div class="text-sm text-on-surface-variant font-medium min-w-0 flex-1">
+      <span id="email-status-text">확인 메일을 전송했습니다. 미수신 시 재전송할 수 있어요.</span>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+      <button type="button" id="email-resend-btn" class="px-4 py-2 rounded-full bg-primary/15 text-primary border border-primary/30 text-sm font-bold font-headline hover:bg-primary/25 transition-colors whitespace-nowrap shrink-0" onclick="resendLastEmail()">
+        재전송
+      </button>
+      <button class="w-9 h-9 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors" onclick="hideEmailStatus()">
+        <span class="material-symbols-outlined text-on-surface-variant text-base">close</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+  // ---- Scroll Progress ----
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('scroll-progress');
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    el.style.width = (scrollTop / docHeight * 100) + '%';
+  }, { passive: true });
+
+  // ---- Navbar background on scroll ----
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.style.background = 'rgba(8,8,8,0.85)';
+      navbar.style.backdropFilter = 'blur(24px)';
+      navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+    } else {
+      navbar.style.background = 'rgba(8,8,8,0)';
+      navbar.style.backdropFilter = 'blur(0px)';
+      navbar.style.borderBottom = 'none';
+    }
+  }, { passive: true });
+
+  // ---- Smooth Scroll ----
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ---- Mobile Menu ----
+  let menuOpen = false;
+  function toggleMobileMenu() {
+    menuOpen = !menuOpen;
+    const menu = document.getElementById('mobile-menu');
+    const lines = document.querySelectorAll('.ham-line');
+    menu.classList.toggle('open', menuOpen);
+    if (menuOpen) {
+      lines[0].style.transform = 'translateY(8px) rotate(45deg)';
+      lines[1].style.opacity = '0';
+      lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+    } else {
+      lines[0].style.transform = '';
+      lines[1].style.opacity = '';
+      lines[2].style.transform = '';
+    }
+  }
+
+  // ---- Reveal on Scroll ----
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ---- Counter Animation ----
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1600;
+    const start = performance.now();
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = '1';
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+  // ---- Chart Bars Animation ----
+  const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.data-bar').forEach(bar => bar.classList.add('animated'));
+        chartObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const chartEl = document.getElementById('chart-bars');
+  if (chartEl) chartObserver.observe(chartEl);
+
+  // ---- Dashboard Tabs ----
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+  }
+
+  // ---- FAQ Accordion ----
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ---- Modal ----
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOnOverlay(event, id) {
+    if (event.target === document.getElementById(id)) closeModal(id);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+
+  // ---- Toast ----
+  let toastTimeout;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  function setSubmitLoading(btn, loading) {
+    if (loading) {
+      btn.disabled = true;
+      btn.dataset.originalText = btn.innerHTML;
+      btn.innerHTML = '<span style="display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;"></span>';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = btn.dataset.originalText || btn.innerHTML;
+    }
+  }
+
+  // ---- Form Submissions ----
+  async function submitDemo(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('[type=submit]');
+    const name = document.getElementById('demo-name').value.trim();
+    const email = document.getElementById('demo-email').value.trim();
+    const company = document.getElementById('demo-company').value.trim();
+    const channels = [...document.querySelectorAll('#channel-select .channel-tag')]
+      .filter(b => b.classList.contains('bg-primary/10'))
+      .map(b => b.textContent.trim());
+
+    const payload = { name, email, company, message: channels.length ? `관심 채널: ${channels.join(', ')}` : undefined };
+    setSubmitLoading(btn, true);
+    try {
+      await sendEmail('demo', payload);
+      saveLastEmailPayload({ kind: 'demo', payload });
+      closeModal('demo-modal');
+      showToast(`${name}님, 신청이 완료됐습니다! 곧 연락드릴게요.`);
+      showEmailStatus('요청하신 무료 체험 안내 메일을 전송했습니다. 미수신 시 재전송할 수 있어요.');
+      form.reset();
+      document.querySelectorAll('#channel-select .channel-tag').forEach(b => {
+        b.classList.remove('bg-primary/10', 'text-primary', 'border-primary/50');
+        b.classList.add('text-on-surface-variant', 'border-outline-variant/40');
+      });
+    } catch (err) {
+      showToast('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      console.error('[submitDemo]', err);
+    } finally {
+      setSubmitLoading(btn, false);
+    }
+  }
+
+  async function submitContact(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('[type=submit]');
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const phone = document.getElementById('contact-phone').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+    const inquiryTypeEl = form.querySelector('input[name="inquiry-type"]:checked');
+    const inquiryType = inquiryTypeEl ? inquiryTypeEl.value : '';
+
+    const payload = { name, email, phone: phone || undefined, message: message || undefined, inquiryType };
+    setSubmitLoading(btn, true);
+    try {
+      await sendEmail('contact', payload);
+      saveLastEmailPayload({ kind: 'contact', payload });
+      closeModal('contact-modal');
+      showToast(`${name}님의 문의가 접수됐습니다. 1영업일 내 연락드릴게요.`);
+      showEmailStatus('문의 접수 확인 메일을 전송했습니다. 미수신 시 재전송할 수 있어요.');
+      form.reset();
+    } catch (err) {
+      showToast('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      console.error('[submitContact]', err);
+    } finally {
+      setSubmitLoading(btn, false);
+    }
+  }
+
+  // ---- Channel Tag Toggle ----
+  function toggleChannelTag(btn) {
+    const active = btn.classList.contains('bg-primary/10');
+    btn.classList.toggle('bg-primary/10', !active);
+    btn.classList.toggle('text-primary', !active);
+    btn.classList.toggle('border-primary/50', !active);
+    btn.classList.toggle('text-on-surface-variant', active);
+    btn.classList.toggle('border-outline-variant/40', active);
+  }
+
+  // ---- Newsletter ----
+  async function subscribeNewsletter() {
+    const input = document.getElementById('newsletter-email');
+    const btn = document.getElementById('newsletter-btn');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) { showToast('올바른 이메일 주소를 입력해주세요.'); return; }
+    if (btn) setSubmitLoading(btn, true);
+    try {
+      await sendEmail('newsletter', { email });
+      saveLastEmailPayload({ kind: 'newsletter', payload: { email } });
+      showToast('뉴스레터 구독 신청이 완료됐습니다!');
+      showEmailStatus('뉴스레터 구독 확인 메일을 전송했습니다. 미수신 시 재전송할 수 있어요.');
+      input.value = '';
+    } catch (err) {
+      showToast('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      console.error('[subscribeNewsletter]', err);
+    } finally {
+      if (btn) setSubmitLoading(btn, false);
+    }
+  }
+
+  // ---- Resend (Best-effort client; requires backend endpoint /api/resend) ----
+  const RESEND_ENDPOINT =
+    (window.__RESEND_ENDPOINT__)
+      ? window.__RESEND_ENDPOINT__
+      : (
+        (window.location.protocol === 'file:' ||
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1')
+          ? 'http://localhost:3001/api/resend'
+          : '/api/resend'
+      );
+
+  function saveLastEmailPayload(data) {
+    try {
+      localStorage.setItem('miraise:lastEmailPayload', JSON.stringify({ ...data, ts: Date.now() }));
+    } catch (err) {}
+  }
+
+  function getLastEmailPayload() {
+    try {
+      const raw = localStorage.getItem('miraise:lastEmailPayload');
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function showEmailStatus(text) {
+    const status = document.getElementById('email-status');
+    const t = document.getElementById('email-status-text');
+    if (t && text) t.textContent = text;
+    if (status) status.classList.remove('hidden');
+  }
+
+  function hideEmailStatus() {
+    const status = document.getElementById('email-status');
+    if (status) status.classList.add('hidden');
+  }
+
+  async function fetchWithTimeout(url, options, timeoutMs) {
+    var controller = new AbortController();
+    var t = setTimeout(function () { controller.abort(); }, timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
+  async function sendEmail(kind, payload) {
+    const res = await fetchWithTimeout(RESEND_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind, payload })
+    }, 8000);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${res.status}`);
+    }
+    return res.json();
+  }
+
+  async function resendLastEmail() {
+    const last = getLastEmailPayload();
+    if (!last) {
+      showToast('재전송할 메일 정보가 없습니다. 다시 한 번 신청해 주세요.');
+      return;
+    }
+
+    const statusText = document.getElementById('email-status-text');
+    if (statusText) statusText.textContent = '재전송 요청 중...';
+
+    try {
+      const res = await fetchWithTimeout(RESEND_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: last.kind, payload: last.payload, resend: true })
+      }, 8000);
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `HTTP ${res.status}`);
+      }
+      if (statusText) statusText.textContent = '전송 요청을 보냈습니다. 수분 내 확인해주세요.';
+      showToast('전송 요청이 접수됐습니다.');
+    } catch (err) {
+      // 폴백: 백엔드가 없을 경우 사용자에게 “재전송 요청” 메일 작성을 열어줌
+      const to = (last && last.payload && last.payload.email) ? last.payload.email : '';
+      const support = 'hello@miraise.co';
+      const subject = `[재전송 요청] ${last.kind}`;
+      const body =
+        `아래 내용으로 이메일 재전송을 요청합니다.\n\n` +
+        `요청 타입: ${last.kind}\n` +
+        `받는 이메일: ${to || '(알 수 없음)'}\n` +
+        `이름: ${last.payload && last.payload.name ? last.payload.name : ''}\n` +
+        `연락처: ${last.payload && last.payload.phone ? last.payload.phone : ''}\n` +
+        `메시지: ${last.payload && last.payload.message ? last.payload.message : ''}\n` +
+        `문의 유형: ${last.payload && last.payload.inquiryType ? last.payload.inquiryType : ''}\n`;
+
+      // 사용자 버튼 클릭 상황이므로 mailto 실행은 일반적으로 허용됨
+      window.location.href =
+        `mailto:${encodeURIComponent(support)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      if (statusText) statusText.textContent = '자동 재전송이 어려워 메일 작성으로 전환했습니다.';
+      showToast('재전송 요청 메일 작성을 시작했습니다.');
+    }
+  }
+
+  // ---- Hero Load Animation ----
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.hero-enter').forEach(el => el.classList.add('hero-loaded'));
+    });
+  });
+
+  // ---- Hero: Fixed Scroll-driven Video BG + Parallax ----
+  (function() {
+    const wrapper  = document.getElementById('hero-scroll-wrapper');
+    const sticky   = document.getElementById('hero-sticky');
+    const video    = document.getElementById('hero-video');
+    const vidBar   = document.getElementById('hero-vid-bar');
+    const hint     = document.getElementById('hero-scroll-hint');
+    const badge    = document.getElementById('hero-badge');
+    const headline = document.getElementById('hero-headline');
+    const subtext  = document.getElementById('hero-subtext');
+    const cta      = document.getElementById('hero-cta');
+    const stats    = document.getElementById('hero-stats');
+    if (!video || !wrapper || !sticky) return;
+
+    // 비디오 1초당 스크롤 px (높을수록 더 천천히 재생)
+    const PX_PER_SEC = 300;
+    let hintHidden = false;
+
+    const clamp   = (v, a, b) => Math.max(a, Math.min(b, v));
+    const remap   = (v, lo, hi) => clamp((v - lo) / (hi - lo), 0, 1);
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    function tick() {
+      const wrapperTop = wrapper.offsetTop;
+      const wrapperH   = wrapper.offsetHeight;
+      const travel     = wrapperH - window.innerHeight;
+      const traveled   = window.scrollY - wrapperTop;
+      const p          = clamp(traveled / (travel || 1), 0, 1);
+
+      // ① past 여부 판단 → fixed ↔ absolute 전환
+      const pastHero = window.scrollY >= wrapperTop + travel;
+      wrapper.classList.toggle('hero-past', pastHero);
+
+      // ② 비디오 스크럽 — 고화질 시크
+      if (video.readyState >= 2 && video.duration) {
+        const target = p * video.duration;
+        // 같은 프레임이면 재할당 생략 (불필요한 디코딩 방지)
+        if (Math.abs(video.currentTime - target) > 0.001) {
+          video.currentTime = target;
+        }
+      }
+
+      // ③ 진행 바
+      if (vidBar) vidBar.style.width = (p * 100) + '%';
+
+      // ④ 스크롤 힌트 숨기기
+      if (!hintHidden && p > 0.02 && hint) {
+        hint.style.opacity = '0';
+        hintHidden = true;
+      }
+
+      // ⑤ 텍스트 패럴랙스
+      if (badge) {
+        const t = easeOut(remap(p, 0.20, 0.52));
+        badge.style.opacity   = String(1 - t * 0.95);
+        badge.style.transform = `translateY(${-t * 22}px)`;
+      }
+      if (headline) {
+        const tFade = easeOut(remap(p, 0.32, 0.70));
+        headline.style.transform = `translateY(${-p * 55}px)`;
+        headline.style.opacity   = String(1 - tFade * 0.9);
+      }
+      if (subtext) {
+        const t = easeOut(remap(p, 0.15, 0.48));
+        subtext.style.transform = `translateY(${-p * 75}px)`;
+        subtext.style.opacity   = String(1 - t);
+      }
+      if (cta) {
+        const t = easeOut(remap(p, 0.20, 0.50));
+        cta.style.transform = `translateY(${-p * 85}px)`;
+        cta.style.opacity   = String(1 - t);
+      }
+      if (stats) {
+        const t = easeOut(remap(p, 0.26, 0.55));
+        stats.style.transform = `translateY(${-p * 95}px)`;
+        stats.style.opacity   = String(1 - t);
+      }
+    }
+
+    function setup() {
+      if (!video.duration) return;
+
+      // 모바일: 스크롤 드리븐 비활성 → 자동재생 루프
+      if (window.innerWidth < 768) {
+        wrapper.style.height = '100vh';
+        video.autoplay = true;
+        video.loop = true;
+        video.play().catch(() => {});
+        // 텍스트 패럴랙스도 비활성 (opacity/transform 초기값 유지)
+        return;
+      }
+
+      // 영상을 정지 상태로 유지 (currentTime 조작 전용)
+      video.pause();
+      // 전체 영상 디코딩 힌트 — 첫 프레임부터 고화질
+      if ('fastSeek' in video) {
+        // fastSeek 지원 브라우저는 비활성화 (품질 우선)
+        video.fastSeek = undefined;
+      }
+      // wrapper height = 뷰포트 높이 + 스크롤 여행 거리
+      const travel = Math.round(video.duration * PX_PER_SEC);
+      wrapper.style.height = (window.innerHeight + travel) + 'px';
+      window.addEventListener('scroll', tick, { passive: true });
+      tick();
+    }
+
+    video.addEventListener('loadedmetadata', setup);
+    // 완전히 로드된 뒤 setup — 화질 보장
+    video.addEventListener('canplaythrough', () => {
+      video.pause();
+    });
+    if (video.readyState >= 1 && video.duration) setup();
+  })();
+
+
+  // (Particle canvas removed — video is now the hero background)
+</script>
+</body>
+</html>
