@@ -1809,6 +1809,10 @@
     }
   }
 
+  // ---- 새로고침 시 항상 최상단에서 시작 ----
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
+
   // ---- Hero Load Animation ----
   window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
