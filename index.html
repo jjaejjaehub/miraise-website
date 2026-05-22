@@ -446,16 +446,17 @@
     </a>
 
     <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center space-x-10">
-      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('solution'); return false;">솔루션</a>
-      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('oms'); return false;">OMS</a>
-      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('channels'); return false;">채널 네트워크</a>
-      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('team'); return false;">팀</a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('cycle'); return false;">운영 사이클</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('oms'); return false;">솔루션</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('how'); return false;">협업 방식</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('why'); return false;">차별화</a>
+      <a class="nav-link text-on-surface-variant hover:text-white transition-colors duration-200 font-headline font-bold tracking-tight text-sm" href="#" onclick="scrollToSection('channels'); return false;">채널</a>
     </div>
 
     <div class="flex items-center gap-3">
       <button class="hidden md:block btn-ghost text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm" onclick="openModal('contact-modal')">도입 문의</button>
-      <button class="btn-primary text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm" onclick="openModal('demo-modal')">무료 체험 시작</button>
+      <button class="btn-primary text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm" onclick="openModal('demo-modal')">서비스 알아보기</button>
       <!-- Hamburger -->
       <button id="hamburger" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 ml-2" onclick="toggleMobileMenu()" aria-label="메뉴 열기">
         <span class="ham-line w-6 h-0.5 bg-white transition-all duration-300"></span>
@@ -468,13 +469,14 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="md:hidden bg-[#0e0e0e] border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-4">
-      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('solution'); toggleMobileMenu(); return false;">솔루션</a>
-      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('oms'); toggleMobileMenu(); return false;">OMS</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('cycle'); toggleMobileMenu(); return false;">운영 사이클</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('oms'); toggleMobileMenu(); return false;">솔루션</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('how'); toggleMobileMenu(); return false;">협업 방식</a>
+      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('why'); toggleMobileMenu(); return false;">차별화</a>
       <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('channels'); toggleMobileMenu(); return false;">채널 네트워크</a>
-      <a class="font-headline font-bold text-on-surface-variant hover:text-white text-lg py-2 transition-colors" href="#" onclick="scrollToSection('team'); toggleMobileMenu(); return false;">팀</a>
       <div class="flex gap-3 pt-4 border-t border-white/5">
         <button class="flex-1 btn-ghost text-white px-4 py-3 rounded-full font-bold font-headline text-sm" onclick="openModal('contact-modal'); toggleMobileMenu();">도입 문의</button>
-        <button class="flex-1 btn-primary text-white px-4 py-3 rounded-full font-bold font-headline text-sm" onclick="openModal('demo-modal'); toggleMobileMenu();">무료 체험</button>
+        <button class="flex-1 btn-primary text-white px-4 py-3 rounded-full font-bold font-headline text-sm" onclick="openModal('demo-modal'); toggleMobileMenu();">서비스 알아보기</button>
       </div>
     </div>
   </div>
@@ -499,46 +501,27 @@
 
             <div id="hero-badge" class="hero-enter d1 inline-flex items-center gap-2 bg-white/10 border border-white/15 backdrop-blur-sm text-white text-xs font-black rounded-full px-4 py-2 mb-8 font-headline tracking-wider uppercase">
               <span class="w-1.5 h-1.5 bg-primary rounded-full status-pulse"></span>
-              커머스 운영의 새로운 기준, OMS
+              크로스보더 이커머스 통합 운영
             </div>
 
             <h1 id="hero-headline" class="hero-enter d2 text-5xl md:text-[5.5rem] font-black font-headline leading-[1.05] tracking-tight text-white mb-6 keep-all">
-              브랜드의 글로벌<br/>진출을, 처음부터<br/>끝까지.
+              한국 브랜드의<br/>글로벌 진출,<br/>처음부터 끝까지.
             </h1>
 
             <p id="hero-subtext" class="hero-enter d3 text-lg md:text-xl text-white/75 font-body leading-relaxed mb-10 keep-all max-w-2xl">
-              miraise OMS는 주문·재고·물류·정산을 하나의 운영 흐름으로 통합합니다.<br class="hidden md:block"/>
-              한국 브랜드가 글로벌에서 실제로 팔릴 수 있도록, 처음부터 끝까지 함께합니다.
+              시장을 읽는 것부터 매출이 만들어지는 순간까지.<br class="hidden md:block"/>
+              미라이즈는 흩어진 단계를 하나의 흐름으로 연결합니다.
             </p>
 
-            <div id="hero-cta" class="hero-enter d4 flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-14">
-              <button class="btn-primary text-white px-10 py-5 rounded-full text-lg font-black font-headline flex items-center gap-2" onclick="openModal('demo-modal')">
-                무료 체험 시작
+            <div id="hero-cta" class="hero-enter d4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <button class="btn-primary text-white px-10 py-5 rounded-full text-lg font-black font-headline flex items-center gap-2" onclick="openModal('contact-modal')">
+                도입 상담 예약
                 <span class="material-symbols-outlined text-xl">arrow_forward</span>
               </button>
-              <button class="btn-ghost text-white px-10 py-5 rounded-full text-lg font-bold font-headline flex items-center gap-2" onclick="openModal('contact-modal')">
-                <span class="material-symbols-outlined text-xl">calendar_month</span>
-                도입 상담 예약
+              <button class="btn-ghost text-white px-10 py-5 rounded-full text-lg font-bold font-headline flex items-center gap-2" onclick="scrollToSection('cycle')">
+                <span class="material-symbols-outlined text-xl">timeline</span>
+                통합 운영 사이클 보기
               </button>
-            </div>
-
-            <div id="hero-stats" class="hero-enter d5 flex flex-wrap gap-10 border-l border-white/20 pl-8">
-              <div>
-                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="80">0</span>+</div>
-                <div class="text-sm text-white/50 font-medium mt-1">파트너 브랜드</div>
-              </div>
-              <div>
-                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="12">0</span>개+</div>
-                <div class="text-sm text-white/50 font-medium mt-1">진출 국가</div>
-              </div>
-              <div>
-                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="2">0</span>주</div>
-                <div class="text-sm text-white/50 font-medium mt-1">평균 런칭 기간</div>
-              </div>
-              <div>
-                <div class="text-3xl font-black text-white font-headline"><span class="counter" data-target="99">0</span>.8%</div>
-                <div class="text-sm text-white/50 font-medium mt-1">주문 동기화 정확도</div>
-              </div>
             </div>
 
           </div>
@@ -568,14 +551,12 @@
           <span>Lazada</span><span class="text-primary">•</span>
           <span>Qoo10</span><span class="text-primary">•</span>
           <span>Rakuten</span><span class="text-primary">•</span>
-          <span>Coupang</span><span class="text-primary">•</span>
-          <span>Tmall</span><span class="text-primary">•</span>
           <span>주문 자동화</span><span class="text-primary">•</span>
           <span>재고 동기화</span><span class="text-primary">•</span>
-          <span>선정산 서비스</span><span class="text-primary">•</span>
-          <span>실시간 물류 추적</span><span class="text-primary">•</span>
+          <span>AI 리포트</span><span class="text-primary">•</span>
           <span>글로벌 통관</span><span class="text-primary">•</span>
-          <span>손익 가시화</span><span class="text-primary">•</span>
+          <span>데이터 인사이트</span><span class="text-primary">•</span>
+          <span>경쟁사 분석</span><span class="text-primary">•</span>
         </div>
         <!-- Duplicate for infinite scroll -->
         <div class="flex gap-16 pr-16 items-center text-xs font-black tracking-[0.2em] text-on-surface-variant uppercase font-headline">
@@ -585,70 +566,124 @@
           <span>Lazada</span><span class="text-primary">•</span>
           <span>Qoo10</span><span class="text-primary">•</span>
           <span>Rakuten</span><span class="text-primary">•</span>
-          <span>Coupang</span><span class="text-primary">•</span>
-          <span>Tmall</span><span class="text-primary">•</span>
           <span>주문 자동화</span><span class="text-primary">•</span>
           <span>재고 동기화</span><span class="text-primary">•</span>
-          <span>선정산 서비스</span><span class="text-primary">•</span>
-          <span>실시간 물류 추적</span><span class="text-primary">•</span>
+          <span>AI 리포트</span><span class="text-primary">•</span>
           <span>글로벌 통관</span><span class="text-primary">•</span>
-          <span>손익 가시화</span><span class="text-primary">•</span>
+          <span>데이터 인사이트</span><span class="text-primary">•</span>
+          <span>경쟁사 분석</span><span class="text-primary">•</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ========== ABOUT / PAIN POINTS ========== -->
+  <!-- ========== ABOUT / 우리가 하는 일 ========== -->
   <section id="solution" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
     <div class="grid md:grid-cols-2 gap-20 items-start">
       <div>
-        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Why miraise</div>
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">우리가 하는 일</div>
         <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-10 leading-tight keep-all">
-          글로벌 시장, 혼자<br/>뚫기엔 너무 복잡합니다.
+          흩어진 단계를<br/>하나의 운영으로.
         </h2>
         <p class="reveal reveal-delay-2 text-lg text-on-surface-variant leading-relaxed font-body keep-all mb-10">
-          수많은 플랫폼, 복잡한 통관 절차, 불투명한 정산 주기.<br/>
-          miraise는 브랜드가 제품 경쟁력에만 집중할 수 있도록<br/>
-          복잡한 글로벌 인프라를 하나의 매끄러운 OMS로 통합합니다.
+          시장 조사, 상품 기획, 채널 운영, 마케팅, 물류, 데이터.<br/>
+          각자 다른 도구와 다른 팀에서 움직이던 단계들이<br/>
+          같은 흐름, 같은 데이터, 같은 팀 위에서 다시 연결됩니다.
         </p>
-        <button class="reveal reveal-delay-3 btn-primary text-white px-8 py-4 rounded-full font-bold font-headline flex items-center gap-2" onclick="scrollToSection('oms')">
-          OMS 자세히 보기
+        <button class="reveal reveal-delay-3 btn-primary text-white px-8 py-4 rounded-full font-bold font-headline flex items-center gap-2" onclick="scrollToSection('cycle')">
+          통합 운영 사이클 보기
           <span class="material-symbols-outlined text-lg">arrow_forward</span>
         </button>
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid gap-4">
         <div class="reveal reveal-delay-1 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
-          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">dataset</span>
-          <h3 class="text-lg font-black mb-2 font-headline">원스톱 솔루션</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">진입부터 운영까지 전 과정 통합 관리</p>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">timeline</span>
+          <h3 class="text-lg font-black mb-2 font-headline">하나의 흐름으로</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">단계마다 끊기지 않는 통합 운영. 기획부터 데이터 분석까지 같은 라인 위에서 움직입니다.</p>
         </div>
         <div class="reveal reveal-delay-2 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
-          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">groups</span>
-          <h3 class="text-lg font-black mb-2 font-headline">실전 중심 팀</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">현지 시장 경험이 풍부한 전문가 조직</p>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">hub</span>
+          <h3 class="text-lg font-black mb-2 font-headline">하나의 데이터</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">모든 채널과 단계가 같은 데이터 위에서. 결과를 다시 다음 결정의 기준으로 되돌립니다.</p>
         </div>
         <div class="reveal reveal-delay-3 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
-          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">query_stats</span>
-          <h3 class="text-lg font-black mb-2 font-headline">투명한 데이터</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">실시간 대시보드로 확인하는 매출 지표</p>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">groups</span>
+          <h3 class="text-lg font-black mb-2 font-headline">하나의 팀</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">전략부터 시스템까지 같은 손에서. 컨설팅과 운영, 솔루션 개발을 한 팀이 함께 책임집니다.</p>
         </div>
-        <div class="reveal reveal-delay-4 p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
-          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">payments</span>
-          <h3 class="text-lg font-black mb-2 font-headline">선정산 지원</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">빠른 자금 회전으로 성장을 가속화</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CYCLE / 통합 운영 사이클 7단계 ========== -->
+  <section id="cycle" class="py-20 md:py-36 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="mb-20">
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">통합 운영 사이클</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">시장을 읽는 것에서<br/>매출이 만들어지는 순간까지.</h2>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-3xl keep-all">7단계가 끊기지 않고 이어지는 하나의 사이클. 각 단계의 결과는 다시 다음 결정의 입력값이 됩니다.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="reveal reveal-delay-1 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 01</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">explore</span>
+          <h3 class="text-lg font-black mb-2 font-headline">시장 이해</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">목표 시장의 수요·경쟁·트렌드를 데이터로 읽고, 브랜드가 설 자리를 정의합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-2 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 02</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">lightbulb</span>
+          <h3 class="text-lg font-black mb-2 font-headline">상품 기획</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">시장 데이터를 바탕으로 카테고리·라인업·가격·포지셔닝을 함께 설계합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-3 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 03</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">factory</span>
+          <h3 class="text-lg font-black mb-2 font-headline">소싱 · 생산</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">현지 규격과 인증, 생산 일정에 맞춰 안정적으로 공급할 수 있는 구조를 만듭니다.</p>
+        </div>
+        <div class="reveal reveal-delay-4 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 04</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">storefront</span>
+          <h3 class="text-lg font-black mb-2 font-headline">등록 · 관리</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">채널별 입점·상세 페이지·정책 관리까지, 운영의 기준선을 같은 손에서 유지합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-1 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 05</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">campaign</span>
+          <h3 class="text-lg font-black mb-2 font-headline">판촉 · 마케팅</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">채널 광고와 콘텐츠, 프로모션을 한 흐름으로 운영해 트래픽과 전환을 만듭니다.</p>
+        </div>
+        <div class="reveal reveal-delay-2 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 06</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">local_shipping</span>
+          <h3 class="text-lg font-black mb-2 font-headline">배송 · 물류</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">국제 배송과 현지 풀필먼트, 통관까지 운영 안에서 함께 이어지도록 설계합니다.</p>
+        </div>
+        <div class="reveal reveal-delay-3 relative p-7 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+          <div class="text-xs font-black text-primary mb-4 font-headline tracking-widest">STEP 07</div>
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl oms-icon">insights</span>
+          <h3 class="text-lg font-black mb-2 font-headline">데이터 · 인사이트</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">결과 데이터가 다시 시장 이해와 상품 기획으로 돌아가, 다음 사이클의 입력값이 됩니다.</p>
+        </div>
+        <div class="reveal reveal-delay-4 relative p-7 rounded-2xl border border-primary/30 bg-primary/5 oms-card flex flex-col justify-center">
+          <span class="material-symbols-outlined text-primary mb-4 text-3xl">all_inclusive</span>
+          <h3 class="text-lg font-black mb-2 font-headline">하나의 사이클</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">단계마다 끊기지 않고, 결과가 다음 결정으로 되돌아오는 통합 운영의 형태입니다.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========== DASHBOARD SECTION ========== -->
-  <section class="py-20 md:py-36 bg-[#0a0a0a]">
+  <section id="dashboard" class="py-20 md:py-36 bg-[#0a0a0a]">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
       <div class="mb-16">
-        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Live Dashboard</div>
-        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">처음부터 끝까지, 한 팀이<br/>함께합니다.</h2>
-        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl keep-all">모든 채널의 매출과 물류 현황을 한눈에 관리하고 실시간으로 대응하세요.</p>
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">통합 대시보드</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">모든 채널이,<br/>한 화면 안에서.</h2>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl keep-all">분리된 어드민을 오가는 일이 사라집니다. 매출, 주문, 재고, 정산까지 같은 화면에서 흐릅니다.</p>
       </div>
 
       <!-- Mock Dashboard -->
@@ -777,165 +812,197 @@
         </div>
         <div class="reveal reveal-delay-4 space-y-3">
           <div class="text-primary font-black font-headline tracking-tighter text-xl">04</div>
-          <h4 class="text-xl font-black font-headline">선정산 서비스</h4>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">판매 즉시 정산금을 조기에 지급하여 브랜드의 현금 흐름을 개선합니다.</p>
+          <h4 class="text-xl font-black font-headline">AI 리포트 & 인사이트</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">매출·재고·운영 데이터를 AI가 자동 분석해 다음 액션을 제안합니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== OMS SECTION ========== -->
+  <!-- ========== OMS SECTION / 6 Core Solutions ========== -->
   <section id="oms" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
     <div class="mb-16">
-      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">OMS Core</div>
-      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-8 keep-all">커머스 운영의 핵심,<br/>OMS로 연결합니다.</h2>
-      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-3xl keep-all">주문 수집부터 재고 동기화, 출고 지시, 반품 회수까지. miraise OMS는 채널-물류-정산 데이터를 하나의 운영 흐름으로 통합합니다.</p>
+      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">솔루션</div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-8 keep-all">운영을 움직이는<br/>6가지 솔루션.</h2>
+      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-3xl keep-all">주문 관리부터 고객 관계, 상세페이지 제작, 마케팅 분석, AI 리포트, 통합 대시보드까지. 흩어져 있던 도구를 하나의 흐름으로 묶습니다.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-10">
-      <div class="reveal reveal-delay-1 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card cursor-pointer" onclick="openModal('oms-modal-1')">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div class="reveal reveal-delay-1 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
         <div class="flex items-center justify-between mb-6">
-          <div class="text-sm text-primary font-black font-headline">Order Hub</div>
+          <div class="text-sm text-primary font-black font-headline">OMS</div>
           <span class="material-symbols-outlined text-on-surface-variant oms-icon">inbox</span>
         </div>
-        <h3 class="text-2xl font-black font-headline mb-4">주문 통합 수집</h3>
-        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">아마존, 쇼피, 틱톡샵 주문을 실시간으로 수집하고 중복/누락 없이 단일 큐로 관리합니다.</p>
-        <div class="mt-6 text-primary text-xs font-black flex items-center gap-1 font-headline">자세히 보기 <span class="material-symbols-outlined text-base">arrow_forward</span></div>
+        <h3 class="text-2xl font-black font-headline mb-4">주문 관리 시스템</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">여러 채널에서 들어오는 주문을 하나의 화면에서 수집·처리합니다. 단계별 상태를 따라 운영이 끊김 없이 이어집니다.</p>
       </div>
-      <div class="reveal reveal-delay-2 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card cursor-pointer" onclick="openModal('oms-modal-2')">
+      <div class="reveal reveal-delay-2 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
         <div class="flex items-center justify-between mb-6">
-          <div class="text-sm text-primary font-black font-headline">Stock Brain</div>
-          <span class="material-symbols-outlined text-on-surface-variant oms-icon">inventory_2</span>
+          <div class="text-sm text-primary font-black font-headline">CRM</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">group</span>
         </div>
-        <h3 class="text-2xl font-black font-headline mb-4">재고·출고 자동화</h3>
-        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">창고별 가용 재고를 자동 계산하고 SLA 기준으로 최적 출고지를 추천해 품절과 지연을 줄입니다.</p>
-        <div class="mt-6 text-primary text-xs font-black flex items-center gap-1 font-headline">자세히 보기 <span class="material-symbols-outlined text-base">arrow_forward</span></div>
+        <h3 class="text-2xl font-black font-headline mb-4">고객 관계 관리</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">국가·채널별로 흩어진 고객 데이터를 하나로 묶어 재구매와 충성도를 설계할 수 있는 토대를 만듭니다.</p>
       </div>
-      <div class="reveal reveal-delay-3 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card cursor-pointer" onclick="openModal('oms-modal-3')">
+      <div class="reveal reveal-delay-3 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
         <div class="flex items-center justify-between mb-6">
-          <div class="text-sm text-primary font-black font-headline">Finance Sync</div>
-          <span class="material-symbols-outlined text-on-surface-variant oms-icon">account_balance</span>
+          <div class="text-sm text-primary font-black font-headline">Detail Builder</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">design_services</span>
         </div>
-        <h3 class="text-2xl font-black font-headline mb-4">정산·손익 가시화</h3>
-        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">채널 수수료, 물류비, 프로모션 비용을 자동 매칭해 SKU별 실질 마진을 투명하게 보여줍니다.</p>
-        <div class="mt-6 text-primary text-xs font-black flex items-center gap-1 font-headline">자세히 보기 <span class="material-symbols-outlined text-base">arrow_forward</span></div>
+        <h3 class="text-2xl font-black font-headline mb-4">상세페이지 빌더</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">채널별 규격과 언어에 맞춘 상세페이지를 모듈 단위로 구성합니다. 한 번 만든 자산을 여러 채널에서 다시 씁니다.</p>
+      </div>
+      <div class="reveal reveal-delay-1 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-sm text-primary font-black font-headline">Marketing Data</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">insights</span>
+        </div>
+        <h3 class="text-2xl font-black font-headline mb-4">마케팅 데이터</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">광고·유입·전환 지표를 채널별로 쪼개어 보여줍니다. 어디에서 매출이 만들어지는지 한눈에 보입니다.</p>
+      </div>
+      <div class="reveal reveal-delay-2 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-sm text-primary font-black font-headline">AI Report</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">auto_awesome</span>
+        </div>
+        <h3 class="text-2xl font-black font-headline mb-4">AI 리포트</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">매출·재고·광고·경쟁사 데이터를 AI가 정리해 다음 액션을 제안합니다. 사람은 판단에만 집중할 수 있습니다.</p>
+      </div>
+      <div class="reveal reveal-delay-3 p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-sm text-primary font-black font-headline">Dashboard</div>
+          <span class="material-symbols-outlined text-on-surface-variant oms-icon">dashboard</span>
+        </div>
+        <h3 class="text-2xl font-black font-headline mb-4">통합 대시보드</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all text-sm">분리된 어드민을 오갈 필요가 없습니다. 매출·주문·재고·정산을 한 화면에서 따라갑니다.</p>
       </div>
     </div>
 
-    <!-- KPI Bar -->
-    <div class="reveal reveal-delay-4 p-8 bg-surface rounded-2xl border border-outline-variant/15">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <!-- 경쟁사 분석 자동화 -->
+    <div class="reveal reveal-delay-1 p-8 md:p-10 bg-surface rounded-2xl border border-outline-variant/15">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
         <div>
-          <div class="text-3xl font-black font-headline text-on-surface counter" data-target-text="99.8%">99.8%</div>
-          <div class="text-sm text-on-surface-variant mt-1">주문 동기화 정확도</div>
+          <div class="text-xs font-black tracking-[0.25em] text-primary mb-3 uppercase font-headline">Competitor Watch</div>
+          <h3 class="text-2xl md:text-3xl font-black font-headline keep-all">경쟁사 분석 자동화</h3>
+          <p class="text-on-surface-variant mt-3 keep-all max-w-2xl">시장 안에서 우리 브랜드의 위치를 정기적으로 확인합니다. 사람이 일일이 찾아보지 않아도, 흐름을 잃지 않도록.</p>
         </div>
-        <div>
-          <div class="text-3xl font-black font-headline text-on-surface">-37%</div>
-          <div class="text-sm text-on-surface-variant mt-1">오출고 감소율</div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+          <div class="text-xs font-black text-primary font-headline mb-2">01</div>
+          <div class="text-sm font-bold keep-all">경쟁사 수집</div>
         </div>
-        <div>
-          <div class="text-3xl font-black font-headline text-on-surface">D+1</div>
-          <div class="text-sm text-on-surface-variant mt-1">표준 정산 리포트</div>
+        <div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+          <div class="text-xs font-black text-primary font-headline mb-2">02</div>
+          <div class="text-sm font-bold keep-all">가격·프로모션</div>
         </div>
-        <div>
-          <div class="text-3xl font-black font-headline text-on-surface">24/7</div>
-          <div class="text-sm text-on-surface-variant mt-1">운영 모니터링</div>
+        <div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+          <div class="text-xs font-black text-primary font-headline mb-2">03</div>
+          <div class="text-sm font-bold keep-all">상세페이지 변화</div>
         </div>
+        <div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+          <div class="text-xs font-black text-primary font-headline mb-2">04</div>
+          <div class="text-sm font-bold keep-all">리뷰·반응</div>
+        </div>
+        <div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+          <div class="text-xs font-black text-primary font-headline mb-2">05</div>
+          <div class="text-sm font-bold keep-all">AI 요약</div>
+        </div>
+        <div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+          <div class="text-xs font-black text-primary font-headline mb-2">06</div>
+          <div class="text-sm font-bold keep-all">액션 제안</div>
+        </div>
+      </div>
+      <div class="mt-10 pt-8 border-t border-white/5">
+        <p class="text-2xl md:text-3xl font-black font-headline text-on-surface keep-all">AI는 자동으로,<br class="md:hidden"/> 마지막 판단은 사람이.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== HOW IT WORKS ========== -->
-  <section class="py-20 md:py-36 bg-[#0a0a0a]">
+  <!-- ========== HOW IT WORKS / 함께 일하는 방식 ========== -->
+  <section id="how" class="py-20 md:py-36 bg-[#0a0a0a]">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
-      <div class="mb-20 text-center">
-        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Process</div>
-        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">온보딩부터 글로벌 매출까지,<br/>4단계로 완성됩니다.</h2>
-        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">복잡한 과정을 miraise가 대신합니다. 브랜드는 제품에만 집중하세요.</p>
+      <div class="mb-20">
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">How We Work</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">필요한 만큼,<br/>같은 방향을 보며.</h2>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-3xl keep-all">브랜드마다 출발선이 다릅니다. 미라이즈는 협업의 방식 자체를 브랜드의 상황에 맞춰 설계합니다.</p>
       </div>
 
-      <div class="grid md:grid-cols-4 gap-6">
+      <div class="grid md:grid-cols-3 gap-6">
         <div class="reveal reveal-delay-1 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
           <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-primary text-xl">rocket_launch</span>
+            <span class="material-symbols-outlined text-primary text-xl">account_balance</span>
           </div>
-          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 01</div>
-          <h4 class="text-xl font-black font-headline mb-3">무료 진단 상담</h4>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">브랜드 현황, 목표 시장, 제품 카테고리를 분석해 맞춤형 글로벌 전략을 수립합니다.</p>
-          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">~ 1주</div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">MODEL 01</div>
+          <h4 class="text-xl font-black font-headline mb-3">공공·기관 협업</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all mb-5">지자체, 진흥 기관, 협회와 함께 지역·산업의 브랜드들이 해외로 나가는 길을 만듭니다. 정책 사업과 실무 운영 사이의 거리를 좁힙니다.</p>
         </div>
+
         <div class="reveal reveal-delay-2 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
           <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-primary text-xl">integration_instructions</span>
+            <span class="material-symbols-outlined text-primary text-xl">settings_suggest</span>
           </div>
-          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 02</div>
-          <h4 class="text-xl font-black font-headline mb-3">채널·OMS 연동</h4>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">아마존, 쇼피 등 목표 채널 셀러 계정을 개설하고 miraise OMS와 완전히 통합합니다.</p>
-          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">~ 1주</div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">MODEL 02</div>
+          <h4 class="text-xl font-black font-headline mb-3">운영 대행</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all mb-5">브랜드의 채널 운영을 위임받아 직접 움직입니다. 사람의 손을 비우고, 시스템과 전문가가 함께 흐름을 책임집니다.</p>
         </div>
+
         <div class="reveal reveal-delay-3 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
-          <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-primary text-xl">local_shipping</span>
-          </div>
-          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 03</div>
-          <h4 class="text-xl font-black font-headline mb-3">물류 셋업 & 런칭</h4>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">현지 창고 입고부터 통관, 첫 주문 처리까지 miraise 팀이 전담합니다.</p>
-          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">~ 2주</div>
-        </div>
-        <div class="reveal reveal-delay-4 relative p-8 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
           <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-primary text-xl">trending_up</span>
           </div>
-          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">STEP 04</div>
-          <h4 class="text-xl font-black font-headline mb-3">운영·성장 최적화</h4>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">데이터 기반 광고 최적화, 재고 예측, 선정산으로 지속적인 성장을 지원합니다.</p>
-          <div class="mt-4 text-xs text-on-surface-variant/40 font-medium">상시 운영</div>
+          <div class="text-xs font-black text-primary mb-3 font-headline tracking-widest">MODEL 03</div>
+          <h4 class="text-xl font-black font-headline mb-3">성과 기반 파트너십</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all mb-5">결과를 함께 책임지는 방식. 브랜드의 성장과 미라이즈의 보상이 같은 축에서 움직이도록 협업 구조를 설계합니다.</p>
         </div>
       </div>
 
-      <div class="reveal reveal-delay-5 mt-12 text-center">
-        <button class="btn-primary text-white px-10 py-5 rounded-full text-lg font-black font-headline" onclick="openModal('demo-modal')">
-          지금 무료 진단 받기
+      <div class="reveal reveal-delay-5 mt-12 flex flex-col md:flex-row gap-4 items-center justify-center">
+        <button class="btn-primary text-white px-10 py-5 rounded-full text-lg font-black font-headline" onclick="openModal('contact-modal')">
+          협업 방식 상담하기
         </button>
       </div>
     </div>
   </section>
 
-  <!-- ========== WHY SECTION ========== -->
-  <section class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-20">
-      <h2 class="reveal text-4xl md:text-5xl font-black font-headline text-on-surface leading-tight keep-all">
-        해외 판매, 시작은 쉬워도<br/>유지는 어렵습니다.
-      </h2>
-      <div class="space-y-10">
-        <div class="reveal reveal-delay-1 flex gap-7">
-          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">01</div>
-          <div>
-            <h4 class="text-xl font-black mb-2 font-headline">지속 불가능한 마케팅 비용</h4>
-            <p class="text-on-surface-variant leading-relaxed keep-all">데이터 분석 없는 단순 노출 위주의 집행은 수익성 악화의 가장 큰 원인입니다.</p>
-          </div>
+  <!-- ========== WHY MIRAISE / 차별화 3가지 ========== -->
+  <section id="why" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 mb-20">
+      <div>
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">왜 미라이즈인가</div>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface leading-tight keep-all">
+          도구가 아니라,<br/>흐름을 만드는 팀.
+        </h2>
+      </div>
+      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant leading-relaxed keep-all self-end">대행과 솔루션, 사람과 시스템이 따로 놀지 않습니다. 미라이즈는 세 축이 같은 손에서 움직입니다.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="reveal reveal-delay-1 p-10 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+        <div class="text-5xl font-black text-primary/30 font-headline mb-6">01</div>
+        <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-xl">layers</span>
         </div>
-        <div class="reveal reveal-delay-2 flex gap-7">
-          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">02</div>
-          <div>
-            <h4 class="text-xl font-black mb-2 font-headline">현지 CS 대응 실패</h4>
-            <p class="text-on-surface-variant leading-relaxed keep-all">현지 언어와 문화에 대한 깊은 이해 없는 고객 응대는 브랜드 신뢰도를 급격히 하락시킵니다.</p>
-          </div>
+        <h4 class="text-2xl font-black mb-4 font-headline keep-all">도메인 × 시스템</h4>
+        <p class="text-on-surface-variant leading-relaxed keep-all">현장에서 쌓인 운영 노하우와 자체 시스템이 한 곳에 있습니다. 경험은 사람이, 반복은 시스템이 맡습니다.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2 p-10 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+        <div class="text-5xl font-black text-primary/30 font-headline mb-6">02</div>
+        <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-xl">public</span>
         </div>
-        <div class="reveal reveal-delay-3 flex gap-7">
-          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">03</div>
-          <div>
-            <h4 class="text-xl font-black mb-2 font-headline">재고 관리의 복잡성</h4>
-            <p class="text-on-surface-variant leading-relaxed keep-all">과다 재고는 직접적인 비용 부담으로, 잦은 품절은 알고리즘 노출도 하락으로 이어집니다.</p>
-          </div>
+        <h4 class="text-2xl font-black mb-4 font-headline keep-all">통합형 크로스보더 플랫폼</h4>
+        <p class="text-on-surface-variant leading-relaxed keep-all">기획·등록·마케팅·물류·데이터가 흩어지지 않습니다. 글로벌 진출에 필요한 단계를 하나의 흐름으로 연결합니다.</p>
+      </div>
+
+      <div class="reveal reveal-delay-3 p-10 bg-surface-container-low rounded-2xl border border-white/5 oms-card">
+        <div class="text-5xl font-black text-primary/30 font-headline mb-6">03</div>
+        <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-xl">person</span>
         </div>
-        <div class="reveal reveal-delay-4 flex gap-7">
-          <div class="text-2xl font-black text-primary/35 font-headline pt-1 min-w-[2.5rem]">04</div>
-          <div>
-            <h4 class="text-xl font-black mb-2 font-headline">불규칙한 자금 회전</h4>
-            <p class="text-on-surface-variant leading-relaxed keep-all">해외 플랫폼의 긴 정산 주기는 공격적인 재투자와 성장을 가로막는 병목이 됩니다.</p>
-          </div>
-        </div>
+        <h4 class="text-2xl font-black mb-4 font-headline keep-all">자동화 × 전문가</h4>
+        <p class="text-on-surface-variant leading-relaxed keep-all">AI가 데이터를 정리하고, 사람이 마지막 판단을 내립니다. 효율과 책임이 한 자리에서 만납니다.</p>
       </div>
     </div>
   </section>
@@ -944,184 +1011,118 @@
   <section id="channels" class="py-20 md:py-36 bg-[#0a0a0a]">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
       <div class="mb-20 text-center">
-        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Global Channels</div>
+        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">진출 채널</div>
         <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">
-          전 세계 모든 주요 채널에<br/>당신의 브랜드를 연결합니다.
+          주요 권역의 채널을,<br/>하나의 운영으로.
         </h2>
-        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">miraise OMS 하나로 8개 이상 플랫폼을 동시에 운영하세요.</p>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">권역별 대표 채널과 광고 플랫폼을 같은 데이터 위에서 함께 움직입니다.</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('아마존 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">AMAZON</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Global</div>
-          <div class="text-[10px] text-on-surface-variant/40">US · JP · EU · SG</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
+          <div class="flex items-center gap-3">
+            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">일본 · Japan</div>
+          </div>
+          <div class="text-2xl font-black font-headline tracking-tighter">JAPAN</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Qoo10</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Rakuten</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Amazon JP</span>
+          </div>
         </div>
-        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('쇼피 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">SHOPEE</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">S.E. Asia</div>
-          <div class="text-[10px] text-on-surface-variant/40">SG · MY · TH · PH</div>
+        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
+          <div class="flex items-center gap-3">
+            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">미국 · USA</div>
+          </div>
+          <div class="text-2xl font-black font-headline tracking-tighter">USA</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Amazon</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">TikTok Shop</span>
+          </div>
         </div>
-        <div class="reveal reveal-delay-3 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('큐텐 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">Qoo10</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Japan</div>
-          <div class="text-[10px] text-on-surface-variant/40">JP · SG</div>
+        <div class="reveal reveal-delay-3 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
+          <div class="flex items-center gap-3">
+            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">동남아 · S.E. Asia</div>
+          </div>
+          <div class="text-2xl font-black font-headline tracking-tighter">SEA</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Shopee</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Lazada</span>
+          </div>
         </div>
-        <div class="reveal reveal-delay-4 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('라자다 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">LAZADA</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">S.E. Asia</div>
-          <div class="text-[10px] text-on-surface-variant/40">TH · ID · VN</div>
+        <div class="reveal reveal-delay-4 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
+          <div class="flex items-center gap-3">
+            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">광고 연동 · Ads</div>
+          </div>
+          <div class="text-2xl font-black font-headline tracking-tighter">ADS</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Meta</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Google</span>
+          </div>
         </div>
-        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('틱톡샵 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter text-center">TIKTOK SHOP</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Social Commerce</div>
-          <div class="text-[10px] text-on-surface-variant/40">US · UK · SG</div>
-        </div>
-        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('라쿠텐 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">RAKUTEN</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Japan</div>
-          <div class="text-[10px] text-on-surface-variant/40">JP</div>
-        </div>
-        <div class="reveal reveal-delay-3 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('쿠팡 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">COUPANG</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">Taiwan</div>
-          <div class="text-[10px] text-on-surface-variant/40">TW</div>
-        </div>
-        <div class="reveal reveal-delay-4 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-3 channel-card cursor-pointer" onclick="showToast('티몰 채널 연동 문의를 남겨주세요.')">
-          <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-          <div class="text-lg font-black font-headline tracking-tighter">TMALL</div>
-          <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em]">China</div>
-          <div class="text-[10px] text-on-surface-variant/40">CN</div>
+        <div class="reveal reveal-delay-5 bg-gradient-to-br from-[#3182F6]/15 to-surface rounded-2xl border border-[#3182F6]/25 p-8 md:p-10 flex flex-col gap-4 channel-card md:col-span-2">
+          <div class="flex items-center gap-3">
+            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
+            <div class="text-[10px] text-primary font-black uppercase tracking-[0.25em]">차세대 · Next</div>
+          </div>
+          <div class="text-2xl font-black font-headline tracking-tighter">NEXT</div>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">새롭게 열리는 커머스 채널을 함께 준비합니다.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">TikTok Shop</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">ChatGPT 앱</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">YouTube Shopping</span>
+          </div>
         </div>
       </div>
 
-      <div class="reveal reveal-delay-5 mt-8 p-6 bg-surface-container-low/50 rounded-2xl border border-dashed border-outline-variant/30 flex items-center justify-between flex-wrap gap-4">
+      <div class="reveal mt-8 p-6 bg-surface-container-low/50 rounded-2xl border border-dashed border-outline-variant/30 flex items-center justify-between flex-wrap gap-4">
         <div>
-          <div class="font-black text-on-surface font-headline">다른 채널을 사용 중이신가요?</div>
-          <div class="text-sm text-on-surface-variant mt-1">새로운 채널 연동 요청을 보내주세요. 빠르게 검토하겠습니다.</div>
+          <div class="font-black text-on-surface font-headline">다른 채널이 필요하신가요?</div>
+          <div class="text-sm text-on-surface-variant mt-1">필요한 채널을 알려주시면 운영 가능 여부를 함께 검토합니다.</div>
         </div>
         <button class="btn-ghost text-white px-7 py-3 rounded-full font-bold font-headline text-sm flex items-center gap-2" onclick="openModal('contact-modal')">
-          <span class="material-symbols-outlined text-base">add_circle</span> 채널 추가 요청
+          <span class="material-symbols-outlined text-base">add_circle</span> 채널 문의하기
         </button>
       </div>
     </div>
   </section>
 
-  <!-- ========== TEAM ========== -->
-  <section id="team" class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
-    <div class="mb-20">
-      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Team</div>
-      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface keep-all">함께 만드는 글로벌 성공 사례.</h2>
+  <!-- ========== FUTURE ========== -->
+  <section class="py-20 md:py-36 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="mb-16 max-w-3xl">
+      <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">앞으로 만들어갈 것들</div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-black font-headline text-on-surface leading-[1.1] keep-all">운영을 넘어,<br/>브랜드의 성장 인프라로.</h2>
+      <p class="reveal reveal-delay-2 text-on-surface-variant mt-6 leading-relaxed keep-all">미라이즈는 크로스보더 운영을 넘어, 한국 브랜드가 글로벌에서 더 빠르게 성장할 수 있는 기반을 함께 만들어 갑니다.</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-14">
-      <div class="reveal reveal-delay-1 flex flex-col items-start group">
-        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-7 text-3xl font-black text-primary font-headline group-hover:scale-105 transition-transform duration-300 group-hover:bg-primary/20">K</div>
-        <div class="text-2xl font-black mb-1 font-headline">김민수</div>
-        <div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">CEO</div>
-        <p class="text-on-surface-variant leading-relaxed keep-all">한국 브랜드의 글로벌 스케일업을 통해 새로운 시장 기회를 창출하는 비전가입니다. 전 아마존 셀러 전략 파트너.</p>
-        <button class="mt-5 text-primary text-xs font-black flex items-center gap-1 font-headline hover:opacity-70 transition-opacity" onclick="showToast('LinkedIn 프로필로 연결 중...')">
-          <span class="material-symbols-outlined text-base">open_in_new</span> LinkedIn
-        </button>
-      </div>
-      <div class="reveal reveal-delay-2 flex flex-col items-start group">
-        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-7 text-3xl font-black text-primary font-headline group-hover:scale-105 transition-transform duration-300 group-hover:bg-primary/20">L</div>
-        <div class="text-2xl font-black mb-1 font-headline">이서연</div>
-        <div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">Logistics Lead</div>
-        <p class="text-on-surface-variant leading-relaxed keep-all">복잡한 국경 간 물류 네트워크를 단순하고 투명하게 설계하는 전문가입니다. 전 CJ대한통운 해외물류팀.</p>
-        <button class="mt-5 text-primary text-xs font-black flex items-center gap-1 font-headline hover:opacity-70 transition-opacity" onclick="showToast('LinkedIn 프로필로 연결 중...')">
-          <span class="material-symbols-outlined text-base">open_in_new</span> LinkedIn
-        </button>
-      </div>
-      <div class="reveal reveal-delay-3 flex flex-col items-start group">
-        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-7 text-3xl font-black text-primary font-headline group-hover:scale-105 transition-transform duration-300 group-hover:bg-primary/20">P</div>
-        <div class="text-2xl font-black mb-1 font-headline">박준형</div>
-        <div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">Marketing Director</div>
-        <p class="text-on-surface-variant leading-relaxed keep-all">데이터 기반의 철저한 현지화 마케팅으로 브랜드의 실제 판매 가치를 극대화합니다. 전 카카오커머스 그로스.</p>
-        <button class="mt-5 text-primary text-xs font-black flex items-center gap-1 font-headline hover:opacity-70 transition-opacity" onclick="showToast('LinkedIn 프로필로 연결 중...')">
-          <span class="material-symbols-outlined text-base">open_in_new</span> LinkedIn
-        </button>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========== TESTIMONIALS ========== -->
-  <section class="py-20 md:py-36 bg-[#0a0a0a]">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-      <div class="mb-20 text-center">
-        <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">Success Stories</div>
-        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface keep-all">수많은 브랜드들이 이미<br/>성장을 경험하고 있습니다.</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="reveal bg-surface-container-low p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-5">
+        <div class="oms-icon w-14 h-14 rounded-2xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-[28px] text-primary">description</span>
+        </div>
+        <div class="text-xs font-black tracking-[0.25em] text-on-surface-variant uppercase font-headline">01</div>
+        <h3 class="text-2xl font-black font-headline text-on-surface keep-all">수출 행정 자동화</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all">통관·인증·세무로 흩어진 행정 업무를 한 흐름으로 묶어, 브랜드가 운영에 집중할 수 있도록 만듭니다.</p>
       </div>
-
-      <div class="grid md:grid-cols-2 gap-8 mb-8">
-        <div class="reveal reveal-delay-1 p-8 md:p-12 bg-surface-container rounded-3xl relative overflow-hidden border border-white/5 testimonial-card">
-          <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface/4 absolute top-6 right-6 md:right-8">format_quote</span>
-          <p class="text-xl font-bold leading-[1.7] mb-12 relative z-10 keep-all pr-16 md:pr-28">
-            "수출 초기에 겪었던 물류와 정산의 불확실성이 miraise를 만난 후 완벽히 해소되었습니다. 이제는 제품 기획과 본질적인 브랜드 가치에만 전념하고 있습니다."
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-surface-bright rounded-full flex items-center justify-center font-black text-primary font-headline">A</div>
-            <div>
-              <div class="font-black text-base font-headline">A 뷰티 브랜드</div>
-              <div class="text-sm text-on-surface-variant font-medium">대표이사 · 아마존 US 진출</div>
-            </div>
-            <div class="ml-auto text-right">
-              <div class="text-2xl font-black text-primary font-headline">+340%</div>
-              <div class="text-xs text-on-surface-variant">6개월 매출 성장</div>
-            </div>
-          </div>
+      <div class="reveal reveal-delay-1 bg-surface-container-low p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-5">
+        <div class="oms-icon w-14 h-14 rounded-2xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-[28px] text-primary">query_stats</span>
         </div>
-        <div class="reveal reveal-delay-2 p-8 md:p-12 bg-gradient-to-br from-[#3182F6]/15 to-surface-container rounded-3xl relative overflow-hidden border border-[#3182F6]/25 testimonial-card">
-          <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface/8 absolute top-6 right-6 md:right-8">format_quote</span>
-          <p class="text-xl font-bold leading-[1.7] mb-12 relative z-10 text-white keep-all pr-16 md:pr-28">
-            "아마존 진출 3개월 만에 월 매출 1억 원을 달성했습니다. miraise만의 정교한 데이터 분석과 현지화 전략이 없었다면 불가능했을 결과입니다."
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-black text-primary font-headline">B</div>
-            <div>
-              <div class="font-black text-base text-white font-headline">B 건강기능식품 브랜드</div>
-              <div class="text-sm text-white/50 font-medium">운영 총괄 팀장 · 쇼피 SG 진출</div>
-            </div>
-            <div class="ml-auto text-right">
-              <div class="text-2xl font-black text-primary font-headline">₩1억</div>
-              <div class="text-xs text-white/50">월 매출 3개월 달성</div>
-            </div>
-          </div>
-        </div>
+        <div class="text-xs font-black tracking-[0.25em] text-on-surface-variant uppercase font-headline">02</div>
+        <h3 class="text-2xl font-black font-headline text-on-surface keep-all">데이터 기반 신용</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all">실제 운영 데이터로 브랜드의 가능성을 증명합니다. 매출과 채널 성과가 그 자체로 신뢰의 근거가 되는 구조를 준비합니다.</p>
       </div>
-
-      <!-- Extra testimonial row -->
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="reveal reveal-delay-1 p-6 md:p-8 bg-surface-container-low rounded-2xl border border-white/5">
-          <div class="flex gap-1 mb-4">
-            <span class="text-primary text-sm">★★★★★</span>
-          </div>
-          <p class="text-base font-medium leading-relaxed mb-6 text-on-surface-variant keep-all">"OMS 연동 이후 주문 처리 시간이 70% 단축됐습니다. 팀 리소스를 마케팅에 집중할 수 있게 됐어요."</p>
-          <div class="font-black text-sm font-headline">C 패션 브랜드</div>
-          <div class="text-xs text-on-surface-variant">이커머스 팀장 · 틱톡샵 US</div>
+      <div class="reveal reveal-delay-2 bg-surface-container-low p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-5">
+        <div class="oms-icon w-14 h-14 rounded-2xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-[28px] text-primary">account_balance_wallet</span>
         </div>
-        <div class="reveal reveal-delay-2 p-8 bg-surface-container-low rounded-2xl border border-white/5">
-          <div class="flex gap-1 mb-4">
-            <span class="text-primary text-sm">★★★★★</span>
-          </div>
-          <p class="text-base font-medium leading-relaxed mb-6 text-on-surface-variant keep-all">"선정산 덕분에 재고 투자를 2배로 늘릴 수 있었어요. 자금 회전이 이렇게 편해질 줄 몰랐습니다."</p>
-          <div class="font-black text-sm font-headline">D 생활용품 브랜드</div>
-          <div class="text-xs text-on-surface-variant">CFO · 아마존 JP 진출</div>
-        </div>
-        <div class="reveal reveal-delay-3 p-8 bg-surface-container-low rounded-2xl border border-white/5">
-          <div class="flex gap-1 mb-4">
-            <span class="text-primary text-sm">★★★★★</span>
-          </div>
-          <p class="text-base font-medium leading-relaxed mb-6 text-on-surface-variant keep-all">"쇼피 입점부터 첫 매출까지 2주밖에 걸리지 않았어요. miraise 팀의 스피드와 전문성에 놀랐습니다."</p>
-          <div class="font-black text-sm font-headline">E 식품 브랜드</div>
-          <div class="text-xs text-on-surface-variant">대표 · 쇼피 SG·MY 동시 진출</div>
-        </div>
+        <div class="text-xs font-black tracking-[0.25em] text-on-surface-variant uppercase font-headline">03</div>
+        <h3 class="text-2xl font-black font-headline text-on-surface keep-all">글로벌 금융 연계</h3>
+        <p class="text-on-surface-variant leading-relaxed keep-all">해외 정산과 금융 파트너십을 통해, 자금이 운영의 발목을 잡지 않는 환경을 함께 만들어 갑니다.</p>
       </div>
     </div>
   </section>
@@ -1136,47 +1137,47 @@
     <div class="space-y-2" id="faq-container">
       <div class="reveal faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
         <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
-          miraise OMS는 어떤 기업에 적합한가요?
+          어떤 브랜드와 함께하나요?
           <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
         </button>
         <div class="faq-answer px-7 pb-7">
-          <p class="text-on-surface-variant leading-relaxed keep-all">해외 판매를 시작하거나 이미 진행 중인 국내 브랜드라면 누구나 적합합니다. 특히 멀티채널 운영, 재고 관리 비효율, 정산 지연으로 어려움을 겪는 브랜드에 최적화되어 있습니다. 월 주문 100건 이상의 규모부터 대형 브랜드까지 모두 지원합니다.</p>
+          <p class="text-on-surface-variant leading-relaxed keep-all">해외 진출을 준비 중이거나 이미 운영 중인 국내 브랜드라면 누구나 함께할 수 있습니다. 시장조사 단계의 브랜드부터, 이미 여러 채널을 운영하며 통합 운영이 필요한 브랜드까지 상황에 맞춰 협업 방식을 설계합니다.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-1 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
         <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
-          OMS 연동에는 얼마나 걸리나요?
+          어디서부터 시작할 수 있나요?
           <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
         </button>
         <div class="faq-answer px-7 pb-7">
-          <p class="text-on-surface-variant leading-relaxed keep-all">대부분의 채널 연동은 영업일 기준 3~5일 이내에 완료됩니다. 초기 온보딩부터 첫 주문 처리까지 전체 셋업 기간은 평균 2주입니다. miraise 팀이 모든 기술 연동을 담당하므로 별도 개발 리소스가 필요하지 않습니다.</p>
+          <p class="text-on-surface-variant leading-relaxed keep-all">반드시 처음부터 시작하지 않아도 됩니다. 시장조사부터 함께하는 브랜드도 있고, 이미 진행 중인 단계 중 필요한 부분만 함께하는 브랜드도 있습니다. 브랜드의 현재 위치에서부터 함께 설계합니다.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-2 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
         <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
-          선정산 서비스는 어떻게 이용하나요?
+          어떤 채널과 연결되나요?
           <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
         </button>
         <div class="faq-answer px-7 pb-7">
-          <p class="text-on-surface-variant leading-relaxed keep-all">miraise Finance Sync가 플랫폼별 정산 데이터를 자동 수집하고, 영업일 기준 D+1에 조기 정산을 지원합니다. 별도 신청 없이 OMS 계약 체결 시 자동으로 활성화되며, 한도 및 수수료는 매출 규모에 따라 맞춤 설정됩니다.</p>
+          <p class="text-on-surface-variant leading-relaxed keep-all">일본의 Qoo10·Rakuten·Amazon JP, 미국의 Amazon·TikTok Shop, 동남아의 Shopee·Lazada 등 주요 글로벌 커머스 채널과 Meta·Google 광고 채널을 연결합니다. 새롭게 열리는 채널은 브랜드와 함께 준비합니다.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-3 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
         <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
-          어떤 물류 파트너와 연동되나요?
+          기존 시스템과 충돌하지는 않나요?
           <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
         </button>
         <div class="faq-answer px-7 pb-7">
-          <p class="text-on-surface-variant leading-relaxed keep-all">CJ대한통운, 한진, 롯데글로벌로지스 등 국내 주요 물류사와 DHL, FedEx, UPS, 현지 라스트마일 파트너까지 20개 이상의 물류사와 연동되어 있습니다. Amazon FBA, Shopee Fulfillment 등 플랫폼 자체 풀필먼트도 지원합니다.</p>
+          <p class="text-on-surface-variant leading-relaxed keep-all">이미 사용 중인 시스템이 있다면 그 위에 미라이즈의 흐름을 얹는 방식으로 설계합니다. 기존 운영을 무너뜨리지 않고, 필요한 영역을 단계적으로 연결합니다.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-4 faq-item bg-surface-container-low rounded-2xl border border-white/5 overflow-hidden">
         <button class="w-full flex items-center justify-between p-7 text-left font-black font-headline text-lg gap-4" onclick="toggleFaq(this)">
-          계약 최소 기간이 있나요?
+          상담은 어떻게 진행되나요?
           <span class="material-symbols-outlined faq-icon text-primary flex-shrink-0">add</span>
         </button>
         <div class="faq-answer px-7 pb-7">
-          <p class="text-on-surface-variant leading-relaxed keep-all">기본 계약 기간은 6개월이며, 이후 월 단위 갱신이 가능합니다. 처음 시작하시는 분들을 위해 2주 무료 체험 프로그램을 운영하고 있습니다. 계약 중도 해지 시 별도 위약금은 없으나 선정산 잔액 정산 절차가 필요합니다.</p>
+          <p class="text-on-surface-variant leading-relaxed keep-all">먼저 브랜드의 현재 상황과 목표를 듣는 것에서 시작합니다. 협업이 필요한 영역과 방식, 어떤 모델이 맞을지 함께 정리한 뒤 다음 단계를 제안드립니다.</p>
         </div>
       </div>
     </div>
@@ -1197,19 +1198,18 @@
     <div class="max-w-4xl mx-auto px-6 md:px-10 text-center">
       <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-8 uppercase font-headline">Get Started</div>
       <h2 class="reveal reveal-delay-1 text-4xl md:text-7xl font-black font-headline text-on-surface mb-10 tracking-tight keep-all">
-        글로벌 진출,<br/>지금 바로 시작하세요.
+        어디서 시작해도,<br/>함께.
       </h2>
-      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant mb-14 keep-all">2주 무료 체험으로 miraise OMS를 직접 경험해보세요.<br/>설치나 계약 없이 바로 시작할 수 있습니다.</p>
+      <p class="reveal reveal-delay-2 text-xl text-on-surface-variant mb-14 keep-all">시장조사부터 시작해도, 이미 운영 중인 솔루션 위에 얹어도 좋습니다.<br/>브랜드의 현재 위치에서 다음 한 걸음을 함께 설계합니다.</p>
       <div class="reveal reveal-delay-3 flex flex-col md:flex-row items-center justify-center gap-5">
-        <button class="w-full md:w-auto btn-primary text-white px-14 py-6 rounded-full text-xl font-black font-headline flex items-center justify-center gap-3" onclick="openModal('demo-modal')">
-          무료 체험 시작하기
+        <button class="w-full md:w-auto btn-primary text-white px-14 py-6 rounded-full text-xl font-black font-headline flex items-center justify-center gap-3" onclick="openModal('contact-modal')">
+          상담 신청하기
           <span class="material-symbols-outlined text-xl">arrow_forward</span>
         </button>
-        <button class="w-full md:w-auto btn-ghost text-white px-14 py-6 rounded-full text-xl font-bold font-headline" onclick="openModal('contact-modal')">
-          도입 문의하기
+        <button class="w-full md:w-auto btn-ghost text-white px-14 py-6 rounded-full text-xl font-bold font-headline" onclick="openModal('demo-modal')">
+          서비스 더 알아보기
         </button>
       </div>
-      <p class="reveal reveal-delay-4 mt-8 text-sm text-on-surface-variant/40">신용카드 불필요 · 2주 무료 · 언제든 해지 가능</p>
     </div>
   </section>
 
@@ -1224,7 +1224,7 @@
           <span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-xs font-black text-white">M</span>
           <div class="text-2xl font-black text-white tracking-tighter font-headline">miraise</div>
         </div>
-        <p class="text-sm text-white/40 font-medium leading-relaxed mb-6">글로벌 커머스 운영 시스템.<br/>한국 브랜드의 글로벌 성공을 처음부터 끝까지 함께합니다.</p>
+        <p class="text-sm text-white/40 font-medium leading-relaxed mb-6">AI 기반 통합 글로벌 커머스 운영.<br/>한국 브랜드의 해외 진출을 처음부터 끝까지 한 팀이 책임집니다.</p>
         <div class="flex gap-3">
           <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('LinkedIn으로 이동 중...')">
             <span class="text-white/40 text-xs font-black">in</span>
@@ -1240,8 +1240,9 @@
       <div>
         <div class="font-black text-white mb-5 font-headline tracking-tight">서비스</div>
         <div class="space-y-3">
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('solution')">솔루션 소개</button>
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('oms')">OMS 기능</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('cycle')">운영 사이클</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('oms')">솔루션</button>
+          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('how')">협업 방식</button>
           <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('channels')">채널 네트워크</button>
           <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('요금제 페이지 준비 중입니다.')">요금제</button>
         </div>
@@ -1272,7 +1273,7 @@
     </div>
 
     <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/30">
-      <p class="font-headline font-medium">© 2025 miraise Inc. All rights reserved. Global Commerce Operating System.</p>
+      <p class="font-headline font-medium">© 2025 miraise Inc. All rights reserved. Integrated Global Commerce Operations.</p>
       <div class="flex gap-6">
         <button class="hover:text-primary transition-colors font-bold font-headline" onclick="showToast('개인정보처리방침 페이지로 이동 중...')">Privacy Policy</button>
         <button class="hover:text-primary transition-colors font-bold font-headline" onclick="showToast('이용약관 페이지로 이동 중...')">Terms of Service</button>
@@ -1290,9 +1291,9 @@
     <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('demo-modal')">
       <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
     </button>
-    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Free Trial</div>
-    <h3 class="text-3xl font-black font-headline mb-2">무료 체험 시작하기</h3>
-    <p class="text-on-surface-variant mb-8 text-sm">2주 무료 체험. 신용카드 불필요.</p>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Consultation</div>
+    <h3 class="text-3xl font-black font-headline mb-2">서비스 알아보기</h3>
+    <p class="text-on-surface-variant mb-8 text-sm">간단한 정보를 남겨주시면 담당자가 안내드립니다.</p>
     <form onsubmit="submitDemo(event)">
       <div class="input-wrap">
         <input class="input-field" type="text" id="demo-name" placeholder=" " required/>
@@ -1318,7 +1319,7 @@
         </div>
       </div>
       <button type="submit" class="w-full btn-primary text-white py-4 rounded-full font-black font-headline text-base flex items-center justify-center gap-2">
-        무료 체험 신청하기
+        상담 신청하기
         <span class="material-symbols-outlined text-xl">arrow_forward</span>
       </button>
       <p class="text-center text-xs text-on-surface-variant/40 mt-4">제출 시 <button type="button" class="text-primary hover:opacity-70" onclick="showToast('이용약관 페이지로 이동 중...')">이용약관</button> 및 <button type="button" class="text-primary hover:opacity-70" onclick="showToast('개인정보처리방침 페이지로 이동 중...')">개인정보처리방침</button>에 동의하게 됩니다.</p>
@@ -1382,63 +1383,6 @@
         <span class="material-symbols-outlined text-xl">send</span>
       </button>
     </form>
-  </div>
-</div>
-
-<!-- OMS Detail Modal 1 -->
-<div id="oms-modal-1" class="modal-overlay" onclick="closeModalOnOverlay(event, 'oms-modal-1')">
-  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative">
-    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('oms-modal-1')">
-      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
-    </button>
-    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Order Hub</div>
-    <h3 class="text-3xl font-black font-headline mb-4">주문 통합 수집</h3>
-    <p class="text-on-surface-variant leading-relaxed mb-8 keep-all">miraise Order Hub는 아마존, 쇼피, 틱톡샵을 포함한 8개 이상의 글로벌 채널에서 주문을 실시간으로 수집합니다.</p>
-    <div class="space-y-3 mb-8">
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">채널별 주문을 단일 큐로 통합, 중복/누락 없음</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">1분 이내 실시간 주문 동기화 (API 폴링)</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">주문 상태 자동 분류 및 우선순위 정렬</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">이상 주문 자동 감지 및 알림</span></div>
-    </div>
-    <button class="w-full btn-primary text-white py-4 rounded-full font-black font-headline" onclick="closeModal('oms-modal-1'); openModal('demo-modal')">무료 체험으로 경험하기</button>
-  </div>
-</div>
-
-<!-- OMS Detail Modal 2 -->
-<div id="oms-modal-2" class="modal-overlay" onclick="closeModalOnOverlay(event, 'oms-modal-2')">
-  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative">
-    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('oms-modal-2')">
-      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
-    </button>
-    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Stock Brain</div>
-    <h3 class="text-3xl font-black font-headline mb-4">재고·출고 자동화</h3>
-    <p class="text-on-surface-variant leading-relaxed mb-8 keep-all">AI 기반 재고 예측 엔진이 창고별 가용 재고를 자동 계산하고 최적 출고지를 추천합니다.</p>
-    <div class="space-y-3 mb-8">
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">멀티 창고 통합 재고 관리 (국내·해외 창고)</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">SLA 기반 자동 출고지 추천으로 배송 지연 최소화</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">AI 재고 소진 예측 및 발주 자동화</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">오출고율 -37% 달성 (평균 고객사 기준)</span></div>
-    </div>
-    <button class="w-full btn-primary text-white py-4 rounded-full font-black font-headline" onclick="closeModal('oms-modal-2'); openModal('demo-modal')">무료 체험으로 경험하기</button>
-  </div>
-</div>
-
-<!-- OMS Detail Modal 3 -->
-<div id="oms-modal-3" class="modal-overlay" onclick="closeModalOnOverlay(event, 'oms-modal-3')">
-  <div class="modal-box w-full max-w-lg bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative">
-    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('oms-modal-3')">
-      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
-    </button>
-    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Finance Sync</div>
-    <h3 class="text-3xl font-black font-headline mb-4">정산·손익 가시화</h3>
-    <p class="text-on-surface-variant leading-relaxed mb-8 keep-all">채널별 복잡한 수수료 구조를 자동 매칭하여 SKU별 실질 마진을 투명하게 보여줍니다.</p>
-    <div class="space-y-3 mb-8">
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">채널 수수료·물류비·광고비 자동 매칭</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">SKU별 실질 마진 리포트 (D+1 기준)</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">선정산 서비스로 현금 흐름 최적화</span></div>
-      <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span class="text-sm text-on-surface-variant keep-all">다중 통화 자동 환산 및 환차손 분석</span></div>
-    </div>
-    <button class="w-full btn-primary text-white py-4 rounded-full font-black font-headline" onclick="closeModal('oms-modal-3'); openModal('demo-modal')">무료 체험으로 경험하기</button>
   </div>
 </div>
 
@@ -1628,7 +1572,7 @@
       saveLastEmailPayload({ kind: 'demo', payload });
       closeModal('demo-modal');
       showToast(`${name}님, 신청이 완료됐습니다! 곧 연락드릴게요.`);
-      showEmailStatus('요청하신 무료 체험 안내 메일을 전송했습니다. 미수신 시 재전송할 수 있어요.');
+      showEmailStatus('요청하신 상담 안내 메일을 전송했습니다. 미수신 시 재전송할 수 있어요.');
       form.reset();
       document.querySelectorAll('#channel-select .channel-tag').forEach(b => {
         b.classList.remove('bg-primary/10', 'text-primary', 'border-primary/50');
