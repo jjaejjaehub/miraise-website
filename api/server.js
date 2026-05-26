@@ -37,16 +37,16 @@
     const replyTo = process.env.RESEND_REPLY_TO || from;
 
     const titleByKind = {
-      demo: 'miraise 무료 체험 신청',
-      contact: 'miraise 도입 문의 접수',
-      newsletter: 'miraise 뉴스레터 구독',
+      demo: 'Miraise 무료 체험 신청',
+      contact: 'Miraise 도입 문의 접수',
+      newsletter: 'Miraise 뉴스레터 구독',
     };
 
     const subjectPrefix = isResend ? '[재전송] ' : '';
-    const subject = `${subjectPrefix}${titleByKind[kind] || 'miraise 문의'} 확인 메일`;
+    const subject = `${subjectPrefix}${titleByKind[kind] || 'Miraise 문의'} 확인 메일`;
 
     const lines = [];
-    lines.push('miraise 팀입니다.');
+    lines.push('Miraise 팀입니다.');
     lines.push('');
     lines.push('아래 내용을 기준으로 메일을 전송했습니다.');
     lines.push('');
@@ -63,7 +63,7 @@
 
     const text = lines.join('\n');
     const html = `<div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.7;">
-      <p>miraise 팀입니다.</p>
+      <p>Miraise 팀입니다.</p>
       <p style="margin-top:18px;">아래 내용을 기준으로 메일을 전송했습니다.</p>
       <pre style="background:#f6f8fa;border:1px solid #e5e7eb;padding:12px;border-radius:10px;white-space:pre-wrap;">${escapeHtml(text)}</pre>
       <p style="margin-top:18px;">감사합니다.</p>
@@ -77,11 +77,59 @@
       demo: '무료 체험 신청',
       contact: '도입 문의 접수',
       newsletter: '뉴스레터 구독',
-    }[kind] || 'miraise 문의';
+    }[kind] || 'Miraise 문의';
     return `${isResend ? '[재전송] ' : ''}${base}`;
   }
 
-  app.post('/api/contact', async (req, res) => {
+  function buildSlackMessage(kind, payload, isResend) {
+    const kindEmoji = { demo: '🎯', contact: '💬', newsletter: '📰' }[kind] || '📩';
+    const kindLabel = { demo: '무료 체험 신청', contact: '도입 문의', newsletter: '뉴스레터 구독' }[kind] || '문의';
+    const prefix = isResend ? '[재전송] ' : '';
+    const headline = `${kindEmoji} *${prefix}${kindLabel}*`;
+
+    const fields = [];
+    if (payload.name) fields.push({ type: 'mrkdwn', text: `*이름*\n${payload.name}` });
+    if (payload.email) fields.push({ type: 'mrkdwn', text: `*이메일*\n${payload.email}` });
+    if (payload.phone) fields.push({ type: 'mrkdwn', text: `*연락처*\n${payload.phone}` });
+    if (payload.company) fields.push({ type: 'mrkdwn', text: `*회사명*\n${payload.company}` });
+    if (payload.inquiryType) fields.push({ type: 'mrkdwn', text: `*문의 유형*\n${payload.inquiryType}` });
+
+    const blocks = [
+      { type: 'section', text: { type: 'mrkdwn', text: headline } },
+    ];
+    if (fields.length) blocks.push({ type: 'section', fields });
+    if (payload.message) {
+      blocks.push({ type: 'section', text: { type: 'mrkdwn', text: `*메시지*\n${payload.message}` } });
+    }
+
+    return {
+      text: `${prefix}${kindLabel} - ${payload.email || ''}`,
+      blocks,
+    };
+  }
+
+  async function notifySlack(kind, payload, isResend) {
+    const url = process.env.SLACK_WEBHOOK_URL;
+    if (!url) return;
+    try {
+      const body = buildSlackMessage(kind, payload, isResend);
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        const txt = await res.text().catch(() => '');
+        console.error('[slack] webhook failed:', res.status, txt);
+      } else {
+        console.log('[slack] notified | kind:', kind);
+      }
+    } catch (err) {
+      console.error('[slack] error:', err && err.message ? err.message : err);
+    }
+  }
+
+  async function handleSubmission(req, res) {
     const startedAt = Date.now();
     try {
       const apiKey = requireEnv('RESEND_API_KEY');
@@ -125,12 +173,17 @@
         if (e2) console.error('[resend] inbox send failed:', e2.message || JSON.stringify(e2));
       }
 
+      await notifySlack(kind, payload, !!isResend);
+
       res.json({ ok: true, kind, tookMs: Date.now() - startedAt });
     } catch (err) {
       console.error('[resend] error:', err && err.message ? err.message : err);
       res.status(500).json({ error: err.message || 'Failed' });
     }
-  });
+  }
+
+  app.post('/api/contact', handleSubmission);
+  app.post('/api/resend', handleSubmission);
 
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
