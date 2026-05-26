@@ -9,7 +9,6 @@ CLAUDE.md
 
 # 의존성
 node_modules/
-netlify/functions/node_modules/
 
 # 시스템
 .DS_Store
