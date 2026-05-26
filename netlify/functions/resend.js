@@ -22,16 +22,16 @@ function buildEmail(kind, payload, isResend) {
   const replyTo = process.env.RESEND_REPLY_TO || from;
 
   const titleByKind = {
-    demo: 'miraise 무료 체험 신청',
-    contact: 'miraise 도입 문의 접수',
-    newsletter: 'miraise 뉴스레터 구독',
+    demo: 'Miraise 무료 체험 신청',
+    contact: 'Miraise 도입 문의 접수',
+    newsletter: 'Miraise 뉴스레터 구독',
   };
 
   const subjectPrefix = isResend ? '[재전송] ' : '';
-  const subject = `${subjectPrefix}${titleByKind[kind] || 'miraise 문의'} 확인 메일`;
+  const subject = `${subjectPrefix}${titleByKind[kind] || 'Miraise 문의'} 확인 메일`;
 
   const lines = [];
-  lines.push('miraise 팀입니다.');
+  lines.push('Miraise 팀입니다.');
   lines.push('');
   lines.push('아래 내용을 기준으로 메일을 전송했습니다.');
   lines.push('');
@@ -48,7 +48,7 @@ function buildEmail(kind, payload, isResend) {
 
   const text = lines.join('\n');
   const html = `<div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.7;">
-    <p>miraise 팀입니다.</p>
+    <p>Miraise 팀입니다.</p>
     <p style="margin-top:18px;">아래 내용을 기준으로 메일을 전송했습니다.</p>
     <pre style="background:#f6f8fa;border:1px solid #e5e7eb;padding:12px;border-radius:10px;white-space:pre-wrap;">${escapeHtml(text)}</pre>
     <p style="margin-top:18px;">감사합니다.</p>
@@ -62,7 +62,7 @@ function kindToInternalSubject(kind, isResend) {
     demo: '무료 체험 신청',
     contact: '도입 문의 접수',
     newsletter: '뉴스레터 구독',
-  }[kind] || 'miraise 문의';
+  }[kind] || 'Miraise 문의';
   return `${isResend ? '[재전송] ' : ''}${base}`;
 }
 
