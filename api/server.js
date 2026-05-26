@@ -1,10 +1,14 @@
 // api/server.js
   const express = require('express');
+  const path = require('path');
   const { Resend } = require('resend');
   require('dotenv').config();
 
   const app = express();
   app.use(express.json({ limit: '1mb' }));
+
+  // 정적 파일 서빙: index.html 및 동일 디렉토리의 리소스
+  app.use(express.static(path.join(__dirname, '..'), { index: 'index.html' }));
 
   // CORS (필요 없으면 제거 가능 — 같은 도메인이면 불필요)
   app.use((req, res, next) => {
