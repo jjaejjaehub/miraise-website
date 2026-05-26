@@ -66,6 +66,54 @@ function kindToInternalSubject(kind, isResend) {
   return `${isResend ? '[재전송] ' : ''}${base}`;
 }
 
+function buildSlackMessage(kind, payload, isResend) {
+  const kindEmoji = { demo: '🎯', contact: '💬', newsletter: '📰' }[kind] || '📩';
+  const kindLabel = { demo: '무료 체험 신청', contact: '도입 문의', newsletter: '뉴스레터 구독' }[kind] || '문의';
+  const prefix = isResend ? '[재전송] ' : '';
+  const headline = `${kindEmoji} *${prefix}${kindLabel}*`;
+
+  const fields = [];
+  if (payload.name) fields.push({ type: 'mrkdwn', text: `*이름*\n${payload.name}` });
+  if (payload.email) fields.push({ type: 'mrkdwn', text: `*이메일*\n${payload.email}` });
+  if (payload.phone) fields.push({ type: 'mrkdwn', text: `*연락처*\n${payload.phone}` });
+  if (payload.company) fields.push({ type: 'mrkdwn', text: `*회사명*\n${payload.company}` });
+  if (payload.inquiryType) fields.push({ type: 'mrkdwn', text: `*문의 유형*\n${payload.inquiryType}` });
+
+  const blocks = [
+    { type: 'section', text: { type: 'mrkdwn', text: headline } },
+  ];
+  if (fields.length) blocks.push({ type: 'section', fields });
+  if (payload.message) {
+    blocks.push({ type: 'section', text: { type: 'mrkdwn', text: `*메시지*\n${payload.message}` } });
+  }
+
+  return {
+    text: `${prefix}${kindLabel} - ${payload.email || ''}`,
+    blocks,
+  };
+}
+
+async function notifySlack(kind, payload, isResend) {
+  const url = process.env.SLACK_WEBHOOK_URL;
+  if (!url) return;
+  try {
+    const body = buildSlackMessage(kind, payload, isResend);
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => '');
+      console.error('[slack] webhook failed:', res.status, txt);
+    } else {
+      console.log('[slack] notified | kind:', kind);
+    }
+  } catch (err) {
+    console.error('[slack] error:', err && err.message ? err.message : err);
+  }
+}
+
 exports.handler = async (event) => {
   const headers = {
     'Content-Type': 'application/json',
@@ -126,6 +174,9 @@ exports.handler = async (event) => {
       });
       if (e2) console.error('[resend] inbox send failed:', e2.message || JSON.stringify(e2));
     }
+
+    // 3) Slack 알림 (실패해도 전체 응답은 200 유지)
+    await notifySlack(kind, payload, !!isResend);
 
     return {
       statusCode: 200,

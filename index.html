@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>miraise | 커머스 운영의 새로운 기준, OMS</title>
+<title>Miraise | 커머스 운영의 새로운 기준, OMS</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -437,7 +437,7 @@
     <!-- Logo -->
     <a href="#" class="text-2xl font-black tracking-tighter text-white font-headline flex items-center gap-2 z-10" onclick="scrollToSection('hero'); return false;">
       <span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-xs font-black text-white">M</span>
-      miraise
+      Miraise
     </a>
 
     <!-- Desktop Nav -->
@@ -783,8 +783,9 @@
         <div class="p-5 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-low flex-wrap gap-3">
           <div class="flex gap-2 flex-wrap">
             <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider active font-headline" data-tab="total" onclick="switchTab(this,'total')">통합 매출</button>
-            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="amazon" onclick="switchTab(this,'amazon')">아마존 US</button>
-            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="shopee" onclick="switchTab(this,'shopee')">쇼피 SG</button>
+            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="qoo10" onclick="switchTab(this,'qoo10')">Qoo10</button>
+            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="shopify" onclick="switchTab(this,'shopify')">Shopify</button>
+            <button class="tab-btn px-4 py-2 rounded-lg text-xs font-black tracking-wider text-on-surface-variant font-headline" data-tab="amazon" onclick="switchTab(this,'amazon')">Amazon</button>
           </div>
           <div class="flex items-center gap-4">
             <div class="flex items-center gap-2 text-xs font-medium text-on-surface-variant">
@@ -800,7 +801,7 @@
         <div class="p-8 md:p-12">
           <!-- Tab: Total -->
           <div class="tab-panel active" id="tab-total">
-            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-14">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
               <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               <div class="space-y-2">
                 <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">순매출</div>
@@ -819,6 +820,32 @@
                 <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">8.3x</div>
               </div>
             </div></div>
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">활성 채널</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">12<span class="text-sm text-on-surface-variant ml-1 font-medium">/ 14</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">평균 객단가</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">₩50,200</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">광고 ROAS</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">4.6x</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">반품률</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">1.8%</div>
+              </div>
+            </div></div>
+            <div class="mb-6 flex items-center justify-between">
+              <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주간 매출 추이</div>
+              <div class="flex items-center gap-4 text-[10px] font-bold tracking-wider text-on-surface-variant">
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-primary"></span>이번 주</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-surface-container-high"></span>지난 주</span>
+              </div>
+            </div>
             <div class="h-56 md:h-64 flex items-end justify-between gap-2 md:gap-4 chart-grid rounded-lg px-1" id="chart-bars">
               <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-1"></div>
               <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-2"></div>
@@ -828,19 +855,170 @@
               <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-6"></div>
               <div class="w-full bg-surface-container-high rounded-t-sm hover:bg-primary/20 transition-all duration-300 data-bar bar-7"></div>
             </div>
+            <div class="grid grid-cols-7 gap-2 md:gap-4 mt-2 text-[10px] md:text-xs font-bold tracking-wider text-on-surface-variant text-center">
+              <span>월</span><span>화</span><span>수</span><span>목</span><span class="text-primary">금</span><span>토</span><span>일</span>
+            </div>
+            <div class="mt-10 pt-8 border-t border-outline-variant/10">
+              <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase mb-5">채널별 비중</div>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">Qoo10 (Japan)</span><span class="text-on-surface-variant">₩58.4M · 41%</span></div>
+                  <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:41%"></div></div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">Shopify (D2C)</span><span class="text-on-surface-variant">₩39.8M · 28%</span></div>
+                  <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:28%"></div></div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">Amazon (US)</span><span class="text-on-surface-variant">₩28.5M · 20%</span></div>
+                  <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:20%"></div></div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">기타 채널</span><span class="text-on-surface-variant">₩15.8M · 11%</span></div>
+                  <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-on-surface-variant/40 rounded-full" style="width:11%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Qoo10 -->
+          <div class="tab-panel" id="tab-qoo10">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">Qoo10 매출</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩58.4M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+22.6%</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">1,840</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">메가할인 참여</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">8<span class="text-sm text-on-surface-variant ml-1 font-medium">SKU</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">리뷰 점수</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">4.8<span class="text-sm text-on-surface-variant ml-1 font-medium">/ 5.0</span></div>
+              </div>
+            </div></div>
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">평균 객단가</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">¥4,280</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">CS 응답률</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">99.4%</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">파워셀러 등급</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">Power</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">QSM 재고일수</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">21<span class="text-sm text-on-surface-variant ml-1 font-medium">일</span></div>
+              </div>
+            </div></div>
+            <div class="mb-6 text-xs font-black tracking-widest text-on-surface-variant uppercase">Top SKU · 일본</div>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-md bg-primary/15 text-primary text-xs font-black flex items-center justify-center">1</span>
+                  <span class="text-sm font-bold">스킨케어 세럼 30ml</span>
+                </div>
+                <div class="text-sm font-black tracking-tight">¥2.4M · <span class="text-on-surface-variant font-medium">562건</span></div>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-md bg-primary/15 text-primary text-xs font-black flex items-center justify-center">2</span>
+                  <span class="text-sm font-bold">립 틴트 컬렉션</span>
+                </div>
+                <div class="text-sm font-black tracking-tight">¥1.8M · <span class="text-on-surface-variant font-medium">421건</span></div>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-md bg-primary/15 text-primary text-xs font-black flex items-center justify-center">3</span>
+                  <span class="text-sm font-bold">선쿠션 SPF50+</span>
+                </div>
+                <div class="text-sm font-black tracking-tight">¥1.3M · <span class="text-on-surface-variant font-medium">312건</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Shopify -->
+          <div class="tab-panel" id="tab-shopify">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">Shopify 매출</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩39.8M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+15.3%</span></div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">684</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">전환율</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">3.6%</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">재구매율</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">28%</div>
+              </div>
+            </div></div>
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">평균 객단가</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">$44.20</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">세션 수</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">18,940</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">장바구니 이탈</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">62%</div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">광고 ROAS</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">5.2x</div>
+              </div>
+            </div></div>
+            <div class="mb-6 text-xs font-black tracking-widest text-on-surface-variant uppercase">국가별 매출 비중</div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">미국</span><span class="text-on-surface-variant">$18,420 · 52%</span></div>
+                <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:52%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">캐나다</span><span class="text-on-surface-variant">$6,840 · 19%</span></div>
+                <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:19%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">호주</span><span class="text-on-surface-variant">$4,920 · 14%</span></div>
+                <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:14%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1.5 text-xs font-bold"><span class="text-on-surface">기타</span><span class="text-on-surface-variant">$5,320 · 15%</span></div>
+                <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-on-surface-variant/40 rounded-full" style="width:15%"></div></div>
+              </div>
+            </div>
           </div>
 
           <!-- Tab: Amazon -->
           <div class="tab-panel" id="tab-amazon">
-            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-14">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
               <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               <div class="space-y-2">
-                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">아마존 매출</div>
-                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩87.2M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+18.1%</span></div>
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">Amazon 매출</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩28.5M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+18.1%</span></div>
               </div>
               <div class="space-y-2">
                 <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
-                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">1,620</div>
+                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">512</div>
               </div>
               <div class="space-y-2">
                 <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">FBA 재고율</div>
@@ -851,34 +1029,51 @@
                 <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">#142</div>
               </div>
             </div></div>
-            <div class="flex items-center justify-center h-56 md:h-64 text-on-surface-variant/30 font-black font-headline text-2xl">
-              아마존 주간 추이 차트
-            </div>
-          </div>
-
-          <!-- Tab: Shopee -->
-          <div class="tab-panel" id="tab-shopee">
-            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-14">
+            <div class="dashboard-scroll -mx-8 md:mx-0 px-8 md:px-0 mb-10">
               <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               <div class="space-y-2">
-                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">쇼피 매출</div>
-                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">₩55.3M <span class="text-sm text-primary inline-flex items-center ml-1 font-bold dashboard-badge"><span class="w-1.5 h-1.5 bg-primary rounded-full mr-1.5 status-pulse"></span>+7.8%</span></div>
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">Buy Box 점유율</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">87%</div>
               </div>
               <div class="space-y-2">
-                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">주문 수</div>
-                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">1,220</div>
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">ACoS</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">14.2%</div>
               </div>
               <div class="space-y-2">
-                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">배송 완료율</div>
-                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">98.2%</div>
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">리뷰 평점</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">4.6<span class="text-sm text-on-surface-variant ml-1 font-medium">/ 5.0</span></div>
               </div>
               <div class="space-y-2">
-                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">CS 응답률</div>
-                <div class="text-3xl md:text-4xl font-black font-headline tracking-tight dashboard-num">99.1%</div>
+                <div class="text-xs font-black tracking-widest text-on-surface-variant uppercase">IPI 스코어</div>
+                <div class="text-2xl md:text-3xl font-black font-headline tracking-tight dashboard-num">612</div>
               </div>
             </div></div>
-            <div class="flex items-center justify-center h-56 md:h-64 text-on-surface-variant/30 font-black font-headline text-2xl">
-              쇼피 주간 추이 차트
+            <div class="mb-6 text-xs font-black tracking-widest text-on-surface-variant uppercase">FBA 창고별 재고 현황</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-5 bg-surface-container-low rounded-xl">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold text-on-surface-variant">SDF8 · CA</span>
+                  <span class="text-[10px] font-black tracking-wider text-primary bg-primary/15 px-2 py-1 rounded">정상</span>
+                </div>
+                <div class="text-2xl font-black font-headline tracking-tight">1,240<span class="text-xs text-on-surface-variant ml-1 font-medium">유닛</span></div>
+                <div class="text-xs text-on-surface-variant mt-1">소진 예상: 28일</div>
+              </div>
+              <div class="p-5 bg-surface-container-low rounded-xl">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold text-on-surface-variant">PHX7 · AZ</span>
+                  <span class="text-[10px] font-black tracking-wider text-primary bg-primary/15 px-2 py-1 rounded">정상</span>
+                </div>
+                <div class="text-2xl font-black font-headline tracking-tight">860<span class="text-xs text-on-surface-variant ml-1 font-medium">유닛</span></div>
+                <div class="text-xs text-on-surface-variant mt-1">소진 예상: 19일</div>
+              </div>
+              <div class="p-5 bg-surface-container-low rounded-xl">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold text-on-surface-variant">ATL6 · GA</span>
+                  <span class="text-[10px] font-black tracking-wider text-amber-400 bg-amber-400/15 px-2 py-1 rounded">보충</span>
+                </div>
+                <div class="text-2xl font-black font-headline tracking-tight">240<span class="text-xs text-on-surface-variant ml-1 font-medium">유닛</span></div>
+                <div class="text-xs text-on-surface-variant mt-1">소진 예상: 6일</div>
+              </div>
             </div>
           </div>
         </div>
@@ -963,76 +1158,97 @@
       <div class="mb-20 text-center">
         <div class="reveal text-xs font-black tracking-[0.25em] text-primary mb-6 uppercase font-headline">진출 채널</div>
         <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-black font-headline text-on-surface mb-6 keep-all">
-          한국에서<br/>세계 어디로든.
+          지금 바로 시작 가능한,<br/>두 개의 채널.
         </h2>
-        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">권역별 대표 채널과 광고 플랫폼을 같은 데이터 위에서 함께 움직입니다.</p>
+        <p class="reveal reveal-delay-2 text-xl text-on-surface-variant max-w-2xl mx-auto keep-all">Qoo10 일본과 Shopify 글로벌 D2C. 미라이즈가 현재 직접 연동·운영 중인 채널입니다.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
-          <div class="flex items-center gap-3">
-            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">일본 · Japan</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Qoo10 Japan -->
+        <div class="reveal reveal-delay-1 bg-surface p-8 md:p-12 rounded-2xl border border-white/5 flex flex-col gap-6 channel-card">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="channel-dot w-2 h-2 rounded-full bg-primary status-pulse"></div>
+              <div class="text-[10px] text-primary font-black uppercase tracking-[0.25em]">운영 중 · Live</div>
+            </div>
+            <div class="text-3xl">🇯🇵</div>
           </div>
-          <div class="text-2xl font-black font-headline tracking-tighter">JAPAN</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Qoo10</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Rakuten</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Amazon JP</span>
+          <div>
+            <div class="text-[11px] text-on-surface-variant font-black uppercase tracking-[0.25em] mb-2">일본 · Japan</div>
+            <div class="text-4xl md:text-5xl font-black font-headline tracking-tighter mb-3">Qoo10</div>
+            <p class="text-sm text-on-surface-variant leading-relaxed keep-all">일본 최대 K-뷰티·라이프스타일 마켓플레이스. QSM 입점부터 메가할인 운영, 일본 내 물류·CS까지 한 흐름으로 연결합니다.</p>
           </div>
-        </div>
-        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
-          <div class="flex items-center gap-3">
-            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">미국 · USA</div>
+          <div class="pt-6 border-t border-white/5 grid grid-cols-2 gap-4">
+            <div>
+              <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em] mb-1">연동 범위</div>
+              <div class="text-sm font-bold text-on-surface">주문 · 재고 · 정산</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em] mb-1">운영 지원</div>
+              <div class="text-sm font-bold text-on-surface">상품 등록 · 프로모션</div>
+            </div>
           </div>
-          <div class="text-2xl font-black font-headline tracking-tighter">USA</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Amazon</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">TikTok Shop</span>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-3 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
-          <div class="flex items-center gap-3">
-            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">동남아 · S.E. Asia</div>
-          </div>
-          <div class="text-2xl font-black font-headline tracking-tighter">SEA</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Shopee</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Lazada</span>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1.5 rounded-full bg-primary/15 text-xs font-bold text-primary">QSM 연동</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">메가할인 운영</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">일본 내 CS</span>
           </div>
         </div>
-        <div class="reveal reveal-delay-4 bg-surface p-8 md:p-10 rounded-2xl border border-white/5 flex flex-col gap-4 channel-card">
-          <div class="flex items-center gap-3">
-            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-            <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.25em]">광고 연동 · Ads</div>
+
+        <!-- Shopify Global -->
+        <div class="reveal reveal-delay-2 bg-surface p-8 md:p-12 rounded-2xl border border-white/5 flex flex-col gap-6 channel-card">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="channel-dot w-2 h-2 rounded-full bg-primary status-pulse"></div>
+              <div class="text-[10px] text-primary font-black uppercase tracking-[0.25em]">운영 중 · Live</div>
+            </div>
+            <div class="text-3xl">🌏</div>
           </div>
-          <div class="text-2xl font-black font-headline tracking-tighter">ADS</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Meta</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Google</span>
+          <div>
+            <div class="text-[11px] text-on-surface-variant font-black uppercase tracking-[0.25em] mb-2">글로벌 D2C · Global</div>
+            <div class="text-4xl md:text-5xl font-black font-headline tracking-tighter mb-3">Shopify</div>
+            <p class="text-sm text-on-surface-variant leading-relaxed keep-all">자체 브랜드 스토어를 위한 글로벌 D2C 플랫폼. 스토어 구축부터 결제·배송·광고 데이터까지 같은 대시보드에서 관리합니다.</p>
+          </div>
+          <div class="pt-6 border-t border-white/5 grid grid-cols-2 gap-4">
+            <div>
+              <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em] mb-1">연동 범위</div>
+              <div class="text-sm font-bold text-on-surface">주문 · 고객 · 매출</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em] mb-1">운영 지원</div>
+              <div class="text-sm font-bold text-on-surface">스토어 구축 · 광고</div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1.5 rounded-full bg-primary/15 text-xs font-bold text-primary">Admin API</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">테마 커스텀</span>
+            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">광고 연동</span>
           </div>
         </div>
-        <div class="reveal reveal-delay-5 bg-gradient-to-br from-[#3182F6]/15 to-surface rounded-2xl border border-[#3182F6]/25 p-8 md:p-10 flex flex-col gap-4 channel-card md:col-span-2">
-          <div class="flex items-center gap-3">
-            <div class="channel-dot w-2 h-2 rounded-full bg-primary"></div>
-            <div class="text-[10px] text-primary font-black uppercase tracking-[0.25em]">차세대 · Next</div>
+      </div>
+
+      <!-- Coming Next -->
+      <div class="reveal reveal-delay-3 mt-10 p-8 md:p-10 bg-gradient-to-br from-[#3182F6]/10 to-surface rounded-2xl border border-[#3182F6]/20">
+        <div class="flex items-start justify-between flex-wrap gap-6 mb-6">
+          <div>
+            <div class="text-[10px] text-primary font-black uppercase tracking-[0.25em] mb-3">확장 예정 · Coming Next</div>
+            <h3 class="text-2xl md:text-3xl font-black font-headline keep-all">다음 채널은 함께 만들어 갑니다.</h3>
           </div>
-          <div class="text-2xl font-black font-headline tracking-tighter">NEXT</div>
-          <p class="text-sm text-on-surface-variant leading-relaxed keep-all">새롭게 열리는 커머스 채널을 함께 준비합니다.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">TikTok Shop</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">ChatGPT 앱</span>
-            <span class="px-3 py-1.5 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">YouTube Shopping</span>
-          </div>
+          <p class="text-sm text-on-surface-variant leading-relaxed keep-all max-w-md">필요한 채널의 운영 데이터를 모아 우선순위를 정합니다. 도입을 검토 중이라면 함께 일정을 맞춰드립니다.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-4 py-2 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Rakuten</span>
+          <span class="px-4 py-2 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Amazon</span>
+          <span class="px-4 py-2 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">TikTok Shop</span>
+          <span class="px-4 py-2 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">Shopee</span>
+          <span class="px-4 py-2 rounded-full bg-surface-container text-xs font-bold text-on-surface-variant">YouTube Shopping</span>
         </div>
       </div>
 
       <div class="reveal mt-8 p-6 bg-surface-container-low/50 rounded-2xl border border-dashed border-outline-variant/30 flex items-center justify-between flex-wrap gap-4">
         <div>
-          <div class="font-black text-on-surface font-headline">다른 채널이 필요하신가요?</div>
-          <div class="text-sm text-on-surface-variant mt-1">필요한 채널을 알려주시면 운영 가능 여부를 함께 검토합니다.</div>
+          <div class="font-black text-on-surface font-headline">필요한 채널이 따로 있으신가요?</div>
+          <div class="text-sm text-on-surface-variant mt-1">브랜드 상황에 맞춰 우선순위와 일정을 함께 정리해드립니다.</div>
         </div>
         <button class="btn-ghost text-white px-7 py-3 rounded-full font-bold font-headline text-sm flex items-center gap-2" onclick="openModal('contact-modal')">
           <span class="material-symbols-outlined text-base">add_circle</span> 채널 문의하기
@@ -1211,24 +1427,13 @@
 <!-- ========== FOOTER ========== -->
 <footer class="bg-[#080808] border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
-    <div class="grid md:grid-cols-4 gap-8 md:gap-16 mb-12 md:mb-16 footer-grid">
+    <div class="grid md:grid-cols-3 gap-8 md:gap-16 mb-12 md:mb-16 footer-grid">
       <div class="md:col-span-2">
         <div class="flex items-center gap-2 mb-4">
           <span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-xs font-black text-white">M</span>
-          <div class="text-2xl font-black text-white tracking-tighter font-headline">miraise</div>
+          <div class="text-2xl font-black text-white tracking-tighter font-headline">Miraise</div>
         </div>
-        <p class="text-sm text-white/40 font-medium leading-relaxed mb-6">AI 기반 통합 글로벌 커머스 운영.<br/>한국 브랜드의 해외 진출을 처음부터 끝까지 한 팀이 책임집니다.</p>
-        <div class="flex gap-3">
-          <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('LinkedIn으로 이동 중...')">
-            <span class="text-white/40 text-xs font-black">in</span>
-          </button>
-          <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('Twitter로 이동 중...')">
-            <span class="text-white/40 text-xs font-black">𝕏</span>
-          </button>
-          <button class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all" onclick="showToast('Instagram으로 이동 중...')">
-            <span class="material-symbols-outlined text-white/40 text-base">photo_camera</span>
-          </button>
-        </div>
+        <p class="text-sm text-white/40 font-medium leading-relaxed">AI 기반 통합 글로벌 커머스 운영.<br/>한국 브랜드의 해외 진출을 처음부터 끝까지 한 팀이 책임집니다.</p>
       </div>
       <div>
         <div class="font-black text-white mb-5 font-headline tracking-tight">서비스</div>
@@ -1237,39 +1442,24 @@
           <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('oms')">솔루션</button>
           <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('how')">협업 방식</button>
           <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="scrollToSection('channels')">채널 네트워크</button>
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('요금제 페이지 준비 중입니다.')">요금제</button>
-        </div>
-      </div>
-      <div>
-        <div class="font-black text-white mb-5 font-headline tracking-tight">고객지원</div>
-        <div class="space-y-3">
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="openModal('contact-modal')">도입 문의</button>
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('고객센터: support@miraise.io')">고객센터</button>
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('문서 페이지로 이동 중...')">개발자 문서</button>
-          <button class="block text-sm text-white/40 hover:text-primary transition-colors font-medium" onclick="showToast('블로그로 이동 중...')">블로그</button>
         </div>
       </div>
     </div>
 
-    <!-- Newsletter -->
-    <div class="p-8 bg-surface-container-low rounded-2xl border border-white/5 mb-12">
-      <div class="flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
-        <div>
-          <div class="font-black text-white font-headline mb-1">글로벌 커머스 인사이트 뉴스레터</div>
-          <div class="text-sm text-on-surface-variant">매주 최신 글로벌 커머스 트렌드와 운영 팁을 받아보세요.</div>
-        </div>
-        <div class="flex gap-3 w-full md:w-auto">
-          <input id="newsletter-email" type="email" placeholder="이메일 주소 입력" class="input-field flex-1 md:w-64 text-sm placeholder:text-on-surface-variant/40"/>
-          <button id="newsletter-btn" class="btn-primary text-white px-6 py-2.5 rounded-full font-bold font-headline text-sm flex-shrink-0" onclick="subscribeNewsletter()">구독하기</button>
-        </div>
-      </div>
+    <div class="pt-10 border-t border-white/5 mb-8">
+      <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2 text-xs text-white/40 font-medium leading-relaxed">
+        <div class="flex gap-2"><dt class="text-white/30 shrink-0">법인명</dt><dd>미라이즈</dd></div>
+        <div class="flex gap-2"><dt class="text-white/30 shrink-0">대표자</dt><dd>김성훈</dd></div>
+        <div class="flex gap-2 md:col-span-2"><dt class="text-white/30 shrink-0">본점</dt><dd>서울특별시 강남구 논현로134길 12, 7층</dd></div>
+        <div class="flex gap-2"><dt class="text-white/30 shrink-0">사업자등록번호</dt><dd>389-88-03572</dd></div>
+        <div class="flex gap-2"><dt class="text-white/30 shrink-0">대표 이메일</dt><dd><a href="mailto:dante@miraise.com" class="hover:text-primary transition-colors">dante@miraise.com</a></dd></div>
+      </dl>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/30">
-      <p class="font-headline font-medium">© 2025 miraise Inc. All rights reserved. Integrated Global Commerce Operations.</p>
-      <div class="flex gap-6">
-        <button class="hover:text-primary transition-colors font-bold font-headline" onclick="showToast('개인정보처리방침 페이지로 이동 중...')">Privacy Policy</button>
-        <button class="hover:text-primary transition-colors font-bold font-headline" onclick="showToast('이용약관 페이지로 이동 중...')">Terms of Service</button>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/30 pt-8 border-t border-white/5">
+      <p class="font-headline font-medium">© <span id="footer-year">2026</span> Miraise. All rights reserved.</p>
+      <div class="flex gap-6 items-center">
+        <button class="hover:text-primary transition-colors font-bold font-headline" onclick="openModal('privacy-modal')">개인정보 처리방침</button>
         <button class="hover:text-primary transition-colors font-bold font-headline" onclick="openModal('contact-modal')">Contact Us</button>
       </div>
     </div>
@@ -1311,11 +1501,17 @@
           <button type="button" class="channel-tag px-4 py-1.5 rounded-full border border-outline-variant/40 text-xs font-black font-headline text-on-surface-variant transition-all hover:border-primary/50" onclick="toggleChannelTag(this)">기타</button>
         </div>
       </div>
+      <label class="flex items-start gap-3 mt-2 mb-4 cursor-pointer group">
+        <input type="checkbox" id="demo-consent" class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/5 accent-primary shrink-0" required/>
+        <span class="text-xs text-on-surface-variant/70 leading-relaxed">
+          <span class="text-white/80 font-bold">(필수)</span> 문의 응대를 위한 개인정보 수집·이용에 동의합니다.
+          <button type="button" class="text-primary hover:opacity-70 underline underline-offset-2" onclick="openModal('privacy-modal')">개인정보 처리방침 보기</button>
+        </span>
+      </label>
       <button type="submit" class="w-full btn-primary text-white py-4 rounded-full font-black font-headline text-base flex items-center justify-center gap-2">
         상담 신청하기
         <span class="material-symbols-outlined text-xl">arrow_forward</span>
       </button>
-      <p class="text-center text-xs text-on-surface-variant/40 mt-4">제출 시 <button type="button" class="text-primary hover:opacity-70" onclick="showToast('이용약관 페이지로 이동 중...')">이용약관</button> 및 <button type="button" class="text-primary hover:opacity-70" onclick="showToast('개인정보처리방침 페이지로 이동 중...')">개인정보처리방침</button>에 동의하게 됩니다.</p>
     </form>
   </div>
 </div>
@@ -1371,11 +1567,155 @@
         <textarea class="input-field resize-none" id="contact-message" placeholder=" " rows="3"></textarea>
         <label class="input-label" for="contact-message">추가 메시지 (선택)</label>
       </div>
+      <label class="flex items-start gap-3 mt-2 mb-4 cursor-pointer group">
+        <input type="checkbox" id="contact-consent" class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/5 accent-primary shrink-0" required/>
+        <span class="text-xs text-on-surface-variant/70 leading-relaxed">
+          <span class="text-white/80 font-bold">(필수)</span> 문의 응대를 위한 개인정보 수집·이용에 동의합니다.
+          <button type="button" class="text-primary hover:opacity-70 underline underline-offset-2" onclick="openModal('privacy-modal')">개인정보 처리방침 보기</button>
+        </span>
+      </label>
       <button type="submit" class="w-full btn-primary text-white py-4 rounded-full font-black font-headline text-base flex items-center justify-center gap-2">
         문의 보내기
         <span class="material-symbols-outlined text-xl">send</span>
       </button>
     </form>
+  </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div id="privacy-modal" class="modal-overlay" onclick="closeModalOnOverlay(event, 'privacy-modal')">
+  <div class="modal-box w-full max-w-2xl bg-[#131313] rounded-3xl border border-white/8 p-6 md:p-10 relative max-h-[90vh] overflow-y-auto">
+    <button class="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-bright transition-colors" onclick="closeModal('privacy-modal')">
+      <span class="material-symbols-outlined text-on-surface-variant text-xl">close</span>
+    </button>
+    <div class="text-xs font-black tracking-[0.25em] text-primary mb-4 uppercase font-headline">Privacy</div>
+    <h3 class="text-3xl font-black font-headline mb-2">개인정보 처리방침</h3>
+    <p class="text-on-surface-variant mb-8 text-sm">시행일: 2026년 5월 26일</p>
+
+    <div class="space-y-6 text-sm text-white/70 leading-relaxed">
+      <p>미라이즈(이하 "회사")는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제1조 (개인정보의 처리 목적)</h4>
+        <p>회사는 다음의 목적을 위하여 개인정보를 처리하며, 이용 목적이 변경되는 경우 사전 동의를 받습니다.</p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>도입 문의·서비스 상담 접수 및 응대</li>
+          <li>서비스 안내, 자료 제공 및 후속 연락</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제2조 (처리하는 개인정보 항목)</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong class="text-white/90">필수항목</strong>: 담당자 이름, 업무용 이메일</li>
+          <li><strong class="text-white/90">선택항목</strong>: 연락처, 회사명, 문의 유형, 관심 채널, 문의 내용</li>
+          <li><strong class="text-white/90">자동수집</strong>: 접속 시각, IP 주소, 브라우저 정보 (Netlify 호스팅 로그)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제3조 (개인정보의 보유 및 이용 기간)</h4>
+        <p>회사는 정보주체로부터 동의받은 개인정보 보유·이용 기간 내에서 개인정보를 처리·보유합니다.</p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>문의 접수 정보: 문의 처리 완료일로부터 <strong class="text-white/90">1년</strong> (이후 지체 없이 파기)</li>
+          <li>관계 법령에 따라 보존 의무가 있는 경우 해당 기간 동안 보관</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제4조 (개인정보의 제3자 제공)</h4>
+        <p>회사는 정보주체의 개인정보를 제1조에서 명시한 범위 내에서만 처리하며, 정보주체의 동의 또는 법률의 특별한 규정 등에 해당하는 경우에만 제3자에게 제공합니다. 현재 제3자에게 제공하는 개인정보는 없습니다.</p>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제5조 (개인정보 처리의 위탁)</h4>
+        <p>회사는 원활한 서비스 제공을 위해 아래와 같이 개인정보 처리 업무를 위탁하고 있습니다.</p>
+        <div class="mt-2 border border-white/10 rounded-xl overflow-hidden">
+          <table class="w-full text-xs">
+            <thead class="bg-white/5 text-white/60">
+              <tr>
+                <th class="px-3 py-2 text-left font-bold">수탁자</th>
+                <th class="px-3 py-2 text-left font-bold">위탁 업무</th>
+                <th class="px-3 py-2 text-left font-bold">국가</th>
+              </tr>
+            </thead>
+            <tbody class="text-white/70">
+              <tr class="border-t border-white/5">
+                <td class="px-3 py-2">Resend, Inc.</td>
+                <td class="px-3 py-2">문의 응대용 이메일 발송</td>
+                <td class="px-3 py-2">미국</td>
+              </tr>
+              <tr class="border-t border-white/5">
+                <td class="px-3 py-2">Netlify, Inc.</td>
+                <td class="px-3 py-2">웹사이트 호스팅 및 폼 처리</td>
+                <td class="px-3 py-2">미국</td>
+              </tr>
+              <tr class="border-t border-white/5">
+                <td class="px-3 py-2">Slack Technologies, LLC</td>
+                <td class="px-3 py-2">사내 문의 알림 전송</td>
+                <td class="px-3 py-2">미국</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-white/50 mt-2">※ 국외 이전: 위 수탁사는 미국에 서버를 두고 있으며, 위탁 처리 항목·시점·방법은 본 방침에 명시된 바와 같습니다.</p>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제6조 (정보주체의 권리·의무 및 행사 방법)</h4>
+        <p>정보주체는 회사에 대해 언제든지 다음 각 호의 권리를 행사할 수 있습니다.</p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>개인정보 열람 요구</li>
+          <li>오류 등이 있을 경우 정정 요구</li>
+          <li>삭제 요구</li>
+          <li>처리정지 요구</li>
+        </ul>
+        <p class="mt-2">권리 행사는 아래 개인정보 보호책임자에게 서면, 전자우편 등을 통해 요청하실 수 있으며, 회사는 이에 대해 지체 없이 조치하겠습니다.</p>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제7조 (개인정보의 파기 절차 및 방법)</h4>
+        <p>회사는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다. 전자적 파일 형태는 복구 불가능한 방법으로, 종이 문서는 분쇄하여 파기합니다.</p>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제8조 (개인정보의 안전성 확보 조치)</h4>
+        <p>회사는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>관리적 조치: 내부관리계획 수립·시행, 접근권한 최소화</li>
+          <li>기술적 조치: 전송 구간 암호화(HTTPS), 접근통제시스템 운영</li>
+          <li>물리적 조치: 처리 시스템 접근 제한</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제9조 (개인정보 보호책임자)</h4>
+        <div class="mt-2 p-4 rounded-xl bg-white/5 border border-white/10">
+          <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만 처리 및 피해 구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+          <ul class="mt-3 space-y-1">
+            <li><strong class="text-white/90">성명</strong>: 김성훈</li>
+            <li><strong class="text-white/90">직책</strong>: 대표</li>
+            <li><strong class="text-white/90">연락처</strong>: <a href="mailto:dante@miraise.com" class="text-primary hover:opacity-70">dante@miraise.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제10조 (권익침해 구제 방법)</h4>
+        <p>정보주체는 개인정보 침해로 인한 구제를 받기 위하여 아래 기관에 분쟁해결이나 상담 등을 신청할 수 있습니다.</p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>개인정보분쟁조정위원회: 1833-6972 (www.kopico.go.kr)</li>
+          <li>개인정보침해신고센터: 118 (privacy.kisa.or.kr)</li>
+          <li>대검찰청 사이버범죄수사단: 1301 (www.spo.go.kr)</li>
+          <li>경찰청 사이버수사국: 182 (ecrm.police.go.kr)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-base font-black font-headline text-white mb-2">제11조 (개인정보 처리방침의 변경)</h4>
+        <p>본 개인정보 처리방침은 2026년 5월 26일부터 적용되며, 법령·정책 또는 보안기술의 변경에 따라 내용의 추가·삭제 및 수정이 있을 시에는 변경사항의 시행 7일 전부터 본 페이지를 통해 고지합니다.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1551,6 +1891,11 @@
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('[type=submit]');
+    const consentEl = document.getElementById('demo-consent');
+    if (consentEl && !consentEl.checked) {
+      showToast('개인정보 수집·이용 동의가 필요합니다.');
+      return;
+    }
     const name = document.getElementById('demo-name').value.trim();
     const email = document.getElementById('demo-email').value.trim();
     const company = document.getElementById('demo-company').value.trim();
@@ -1583,6 +1928,11 @@
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('[type=submit]');
+    const consentEl = document.getElementById('contact-consent');
+    if (consentEl && !consentEl.checked) {
+      showToast('개인정보 수집·이용 동의가 필요합니다.');
+      return;
+    }
     const name = document.getElementById('contact-name').value.trim();
     const email = document.getElementById('contact-email').value.trim();
     const phone = document.getElementById('contact-phone').value.trim();
@@ -1755,6 +2105,8 @@
     requestAnimationFrame(() => {
       document.querySelectorAll('.hero-enter').forEach(el => el.classList.add('hero-loaded'));
     });
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
   });
 
   // ---- Hero: Fixed Scroll-driven Video BG + Parallax ----
